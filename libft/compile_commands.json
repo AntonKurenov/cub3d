@@ -1,0 +1,444 @@
+[
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_memset.c"
+  ],
+  "file": "ft_memset.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_bzero.c"
+  ],
+  "file": "ft_bzero.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_memcpy.c"
+  ],
+  "file": "ft_memcpy.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_memccpy.c"
+  ],
+  "file": "ft_memccpy.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_memmove.c"
+  ],
+  "file": "ft_memmove.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_memchr.c"
+  ],
+  "file": "ft_memchr.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_memcmp.c"
+  ],
+  "file": "ft_memcmp.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_strlen.c"
+  ],
+  "file": "ft_strlen.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_strlcpy.c"
+  ],
+  "file": "ft_strlcpy.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_strlcat.c"
+  ],
+  "file": "ft_strlcat.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_strchr.c"
+  ],
+  "file": "ft_strchr.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_strrchr.c"
+  ],
+  "file": "ft_strrchr.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_strnstr.c"
+  ],
+  "file": "ft_strnstr.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_strncmp.c"
+  ],
+  "file": "ft_strncmp.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_atoi.c"
+  ],
+  "file": "ft_atoi.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_isalpha.c"
+  ],
+  "file": "ft_isalpha.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_isdigit.c"
+  ],
+  "file": "ft_isdigit.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_isalnum.c"
+  ],
+  "file": "ft_isalnum.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_isascii.c"
+  ],
+  "file": "ft_isascii.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_isprint.c"
+  ],
+  "file": "ft_isprint.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_toupper.c"
+  ],
+  "file": "ft_toupper.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_tolower.c"
+  ],
+  "file": "ft_tolower.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_calloc.c"
+  ],
+  "file": "ft_calloc.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_strdup.c"
+  ],
+  "file": "ft_strdup.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_substr.c"
+  ],
+  "file": "ft_substr.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_strjoin.c"
+  ],
+  "file": "ft_strjoin.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_strtrim.c"
+  ],
+  "file": "ft_strtrim.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_itoa.c"
+  ],
+  "file": "ft_itoa.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_split.c"
+  ],
+  "file": "ft_split.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_strmapi.c"
+  ],
+  "file": "ft_strmapi.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_putchar_fd.c"
+  ],
+  "file": "ft_putchar_fd.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_putstr_fd.c"
+  ],
+  "file": "ft_putstr_fd.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_putendl_fd.c"
+  ],
+  "file": "ft_putendl_fd.c"
+ },
+ {
+  "directory": "/home/anton/projects/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "libft.h",
+   "-c",
+   "ft_putnbr_fd.c"
+  ],
+  "file": "ft_putnbr_fd.c"
+ }
+]
