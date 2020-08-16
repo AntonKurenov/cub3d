@@ -6,34 +6,47 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:13:24 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/13 16:36:53 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/16 12:01:58 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+s_col init_colours()
+{
+	s_col colour;
+
+	colour.ce_red = 0;
+	colour.ce_blue = 0;
+	colour.ce_green = 0;
+	colour.f_red = 0;
+	colour.f_green = 0;
+	colour.f_blue = 0;
+	return (colour);
+}
+
 s_set	init_set(s_set set)
 {
+	set.colour = init_colours();		
 	set.res_w = 0;
 	set.res_h = 0;
-	set.no_texture = 0;
-	set.s_texture = 0;
-	set.we_texture = 0;
-	set.ea_texture = 0;
-	set.s_texture = 0;
-	set.fl_texture = 0;
-	set.c_texture = 0;
+	set.no_texture = NULL;
+	set.s_texture = NULL;
+	set.we_texture = NULL;
+	set.ea_texture = NULL;
+	set.s_texture = NULL;
+	set.fl_texture = NULL;
+	set.c_texture = NULL;
 	return (set);
 }
 
-s_files init_names(s_files names)
+int check_rest(char **line)
 {
-	names.ea = 0;
-	names.no = 0;
-	names.we = 0;
-	names.so = 0;
-	names.s = 0;
-	return (names);
+	while (**line == ' ')
+		(*line)++;
+	if (**line != '\0')
+		return (1);
+	return (0);
 }
 
 int	parse_resolution(char **line, s_set *set)
@@ -52,78 +65,80 @@ int	parse_resolution(char **line, s_set *set)
 		set->res_w = set->res_w * 10 + (**line - '0');
 		(*line)++;
 	}
-	while (**line == ' ')
-		(*line)++;
-	if (**line != '\0')
-		return (0);
-	return (1);
+	printf("res_h = %d\n", set->res_h);
+	printf("res_w = %d\n", set->res_w);
+	return (check_rest(line));
 }
 
-int	setting_parser(char **line, int count, s_set *set)
+int	setting_parser(char **line, s_set *set)
 {
 	char *str;
 	int ret;
-	s_files names;
 
-	names = init_names(names);
 	while (**line == ' ')
 		(*line)++;
-	str = ft_strdup(*line);
 	if (**line == 'R' && set->res_h == 0)
 	{
-		if ((parse_resolution(&str, set) == 0))
-			return (0);
+		(*line)++;
+		if ((parse_resolution(line, set) == 1))
+			return (1);
 	}
-	if (**line == 'N') 
+	if (**line == 'N' && set->no_texture == 0)
 	{
 		(*line)++;
 		if (**line == 'O')
 		{
+			(*line)++;
 			if ((texture_parser(line, set, 1)) == 0)
-				return (0);
+				return (1);
 		}
-		exit(0);
 	}
-	if (**line == 'W')
+	if (**line == 'W' && set->we_texture == 0)
 	{
 		(*line)++;
 		if (**line == 'E')
 		{
+			(*line)++;
 			if ((texture_parser(line, set, 3)) == 0)
-				return (0);
+				return (1);
 		}
 	}
 	if (**line == 'S')
 	{
 		(*line)++;
-		if (**line == 'O')
+		if (**line == 'O' && set->so_texture == 0)
 		{
+			(*line)++;
 			if ((texture_parser(line, set, 2)) == 0)
-				return (0);
+				return (1);
 		}
-		if (**line == ' ')
+		if (**line == ' ' && set->s_texture == 0)
 		{
 			if ((texture_parser(line, set, 0)) == 0)
-				return (0);
+				return (1);
 		}
 	}
-	if (**line == 'E')
+	if (**line == 'E' && set->ea_texture == 0)
 	{
 		(*line)++;
 		if (**line == 'A')
 		{
+			(*line)++;
 			if ((texture_parser(line, set, 4)) == 0)
-				return (0);
+				return (1);
 		}
 	}
+	if (**line == 'F' || **line == 'C')
+		ret = colour_parser(line, set);
 	return (0);
 }
 
 int open_file(char *name, s_set *set)
 {
 	char *ptr;
-	char fd;
+	int fd;
 	char *line;
+	char *tmp;
 	int ret;
 	int count;
 
@@ -131,15 +146,19 @@ int open_file(char *name, s_set *set)
 		return (0);
 	if ((fd = open(name, O_RDONLY)) == -1)
 	{
-		ft_putstr("Error\n Bad file descriptor");
+		ft_putstr("Error\nBad file descriptor");
 		return (0);
 	}
-	ret = 1;
-	count = 0;
+	printf("name2 = %s\n", name);
+	printf("fd = %d\n", fd);
 	while ((ret = get_next_line(fd, &line)))
 	{
-		if ((setting_parser(&line, count, set)) == 1)
-			count++;
+		tmp = line;
+		if ((setting_parser(&tmp, set)) == 1)
+		{
+			ft_putstr("Error\nInvalid map\n");
+			exit (0);
+		}
 		free(line);
 	}
 	return (0);

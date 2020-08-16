@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   atoi_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/11 18:27:23 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/15 11:45:01 by elovegoo         ###   ########.fr       */
+/*   Created: 2020/07/29 15:00:42 by elovegoo          #+#    #+#             */
+/*   Updated: 2020/08/16 11:36:56 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "printf.h"
 
-void	ft_putstr(char *str)
+int	atoi_str(char **str)
 {
-	while (*str)
+	unsigned int ret;
+	int m;
+
+	ret = 0;
+	m = 1;
+	while (**str == ' ')
+		(*str)++;
+	if (**str == '-')
+		m = -1;
+	if (**str == '-' || **str == '+')
+		(*str)++;
+	while (**str >= '0' && **str <= '9' && **str)
 	{
-		ft_putchar(*str);
-		str++;
+		ret = ret * 10 + (**str - '0');
+		(*str)++;
 	}
+	return (ret * m);
 }
