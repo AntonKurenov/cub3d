@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:29:07 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/15 12:11:06 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/16 17:35:55 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int extension_comp(char *name, int len)
 
 	i = 0;
 	ptr = (name + len - 4);
-	printf("ptr = %s\n", ptr);
+	/*printf("ptr = %s\n", ptr);*/
 	extension = ".cub";
 	while (extension[i] == ptr[i] && ptr[i])
 		i++;
-	printf("i = %d\n", i);
+	/*printf("i = %d\n", i);*/
 	if (i == 4)
 		return (1);
 	return (0);

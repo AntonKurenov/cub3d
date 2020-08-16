@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/16 11:29:50 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/16 18:56:14 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,6 @@
 # include "libft/libft.h"
 # include "parser/get_next_line.h"
 # include <stdio.h>
-
-typedef struct t_files
-{
-	char *no;
-	char *so;
-	char *we;
-	char *ea;
-	char *s;
-}		s_files;
 
 typedef struct t_colours
 {
@@ -46,14 +37,12 @@ typedef struct t_set
 	char *we_texture;
 	char *ea_texture;
 	char *s_texture;
-	char *fl_texture;
-	char *c_texture;
 } 				s_set;
 
-int texture_parser(char **line, s_set *set, int type);
+int texture_parser(char *line, s_set *set, int type);
 int error_manager(int num);
 int check_name(char *name);
 int	atoi_str(char **str);
-int colour_parser(char **line, s_set *set);
+int colour_parser(char *line, s_set *set, int type);
 
 #endif

@@ -4,5 +4,5 @@ SO ./south_text
 WE ./west_text
 EA ./east_text
 S ./sprite_text
-F 220,100,0
-C 225,30,0
+F 220,100,234
+C 225,30,123
