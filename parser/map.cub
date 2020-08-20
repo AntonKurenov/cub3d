@@ -1,8 +1,0 @@
-R 1920 1080
-NO ./north_text 
-SO ./south_text
-WE ./west_text
-EA ./east_text
-S ./sprite_text
-F 220,100,0
-C 225,30,0

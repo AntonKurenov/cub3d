@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:29:07 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/16 17:35:55 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/17 19:46:47 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ int extension_comp(char *name, int len)
 	if (i == 4)
 		return (1);
 	return (0);
+}
+
+int file_exit(int flag)
+{
+	ft_putstr("Error\nInvalid map\n");
+	exit (0);
 }
 
 int check_name(char *name)
