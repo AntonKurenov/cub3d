@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/19 16:58:54 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/22 12:38:45 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct t_map
 {
 	int width;
 	int height;
-	int x;
-	int y;
+	//int x;
+	//int y;
 }		s_map;
 
 typedef struct t_set
@@ -62,6 +62,11 @@ int colour_parser(char *line, s_set *set, int type);
 void init_map_parser(char *line, s_set *set, int flag);
 int arr_len(char **str_arr);
 int file_exit(int flag);
-int next_level_map_check(char **map, int len);
+int next_level_map_check(char **map, int len, s_map map_sp);
+char **map_preparation(char **map, int arr_len, s_map *map_specs);
+s_player init_player(s_player new);
+s_col init_colours();
+s_set	init_set(s_set set);
+s_map init_map_specs(s_map map);
 
 #endif

@@ -6,37 +6,11 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:13:24 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/17 20:22:41 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/22 12:17:33 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-static s_col init_colours()
-{
-	s_col colour;
-
-	colour.ce_red = -1;
-	colour.ce_blue = -1;
-	colour.ce_green = -1;
-	colour.f_red = -1;
-	colour.f_green = -1;
-	colour.f_blue = -1;
-	return (colour);
-}
-
-static s_set	init_set(s_set set)
-{
-	set.colour = init_colours();		
-	set.res_w = 0;
-	set.res_h = 0;
-	set.no_texture = NULL;
-	set.s_texture = NULL;
-	set.we_texture = NULL;
-	set.ea_texture = NULL;
-	set.so_texture = NULL;
-	return (set);
-}
 
 int check_set(s_set set)
 {

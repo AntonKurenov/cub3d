@@ -1,0 +1,266 @@
+[
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_atoi.o", 
+   "libft/ft_atoi.c"
+  ], 
+  "file": "libft/ft_atoi.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "parser/texture_parser.o", 
+   "parser/texture_parser.c"
+  ], 
+  "file": "parser/texture_parser.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_strlcpy.o", 
+   "libft/ft_strlcpy.c"
+  ], 
+  "file": "libft/ft_strlcpy.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "parser/init_parsing.o", 
+   "parser/init_parsing.c"
+  ], 
+  "file": "parser/init_parsing.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "parser/error_handler.o", 
+   "parser/error_handler.c"
+  ], 
+  "file": "parser/error_handler.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_calloc.o", 
+   "libft/ft_calloc.c"
+  ], 
+  "file": "libft/ft_calloc.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "parser/get_next_line.o", 
+   "parser/get_next_line.c"
+  ], 
+  "file": "parser/get_next_line.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_strchr.o", 
+   "libft/ft_strchr.c"
+  ], 
+  "file": "libft/ft_strchr.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_strdup.o", 
+   "libft/ft_strdup.c"
+  ], 
+  "file": "libft/ft_strdup.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_strncmp.o", 
+   "libft/ft_strncmp.c"
+  ], 
+  "file": "libft/ft_strncmp.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_substr.o", 
+   "libft/ft_substr.c"
+  ], 
+  "file": "libft/ft_substr.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_putchar.o", 
+   "libft/ft_putchar.c"
+  ], 
+  "file": "libft/ft_putchar.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "parser/map_checker.o", 
+   "parser/map_checker.c"
+  ], 
+  "file": "parser/map_checker.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_memset.o", 
+   "libft/ft_memset.c"
+  ], 
+  "file": "libft/ft_memset.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_isdigit.o", 
+   "libft/ft_isdigit.c"
+  ], 
+  "file": "libft/ft_isdigit.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "parser/map_parser.o", 
+   "parser/map_parser.c"
+  ], 
+  "file": "parser/map_parser.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_putstr.o", 
+   "libft/ft_putstr.c"
+  ], 
+  "file": "libft/ft_putstr.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "parser/map_preparation.o", 
+   "parser/map_preparation.c"
+  ], 
+  "file": "parser/map_preparation.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "parser/atoi_str.o", 
+   "parser/atoi_str.c"
+  ], 
+  "file": "parser/atoi_str.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_split.o", 
+   "libft/ft_split.c"
+  ], 
+  "file": "libft/ft_split.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "libft/ft_strjoin.o", 
+   "libft/ft_strjoin.c"
+  ], 
+  "file": "libft/ft_strjoin.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "parser/get_next_line_utils.o", 
+   "parser/get_next_line_utils.c"
+  ], 
+  "file": "parser/get_next_line_utils.c"
+ }
+]

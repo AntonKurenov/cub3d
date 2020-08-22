@@ -8,7 +8,7 @@ COMP_FLAGS = #-Wall -Wextra -Werror
 
 PARSER_SRCS = error_handler.c get_next_line.c \
 			  get_next_line_utils.c init_parsing.c texture_parser.c \
-			  atoi_str.c map_parser.c map_checker.c
+			  atoi_str.c map_parser.c map_checker.c map_preparation.c
 
 SRCS = 
 

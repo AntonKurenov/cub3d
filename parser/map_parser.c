@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 14:26:00 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/19 17:11:18 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/22 12:38:45 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ static char	*dup_with_new_line(const char *s)
  * next_level_map_check
  */
 
-static void is_only_one(char *line)
-{
-	int i;
+/*static void is_only_one(char *line)*/
+/*{*/
+	/*int i;*/
 
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] != '1' && line[i] != ' ')
-			file_exit(1);
-		i++;
-	}
-}
+	/*i = 0;*/
+	/*while (line[i])*/
+	/*{*/
+		/*if (line[i] != '1' && line[i] != ' ')*/
+			/*file_exit(1);*/
+		/*i++;*/
+	/*}*/
+/*}*/
 
 static void map_checker(char **map, s_set *set)
 {
@@ -56,12 +56,16 @@ static void map_checker(char **map, s_set *set)
 	int j;
 	int len;
 	int start_wall;
+	s_map map_specs;
 
+	map_specs = init_map_specs(map_specs);
 	i = 0;
-	len = arr_len(map) - 1;
-	is_only_one(map[i]);
-	is_only_one(map[len]);
-	next_level_map_check(map, len);
+	len = arr_len(map);
+	printf("len = %d\n", len);
+	map = map_preparation(map, len, &map_specs);
+	/*is_only_one(map[i]);*/
+	/*is_only_one(map[len]);*/
+	next_level_map_check(map, len, map_specs);
 }
 
 static int map_parser(char **line, s_set *set)
