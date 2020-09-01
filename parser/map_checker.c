@@ -6,97 +6,46 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 18:44:59 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/22 14:59:53 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/25 17:25:24 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int check_up_and_down(char **map, int x, int y, int range)
+static void check_map_elem(char **map, int x, int y, t_player *player)
 {
-	int i;
-	int j;
-	int flag;
+	char *str;
+	char *pl;
 
-	j = y;
-	flag = 0;
-	while (j > 0)
+	str = "021NEWS";
+	pl = "NEWS";
+	printf("map[%d][%d] = %c\n", y, x, map[y][x]);
+	if ((ft_strchr(pl, map[y][x]) != NULL) && player->x != 0)
+		file_exit(1);
+	if ((ft_strchr(pl, map[y][x]) != NULL) && player->x == 0)
 	{
-		j--;
-		if (map[j][x] == ' ')
-			return (1);
-		if (map[j][x] == '1')
-		{
-			flag++;
-			break ;
-		}
-		/*printf("%c", map[j][x]);*/
+		player->direct = map[y][x];
+		player->x = x;
+		player->y = y;
 	}
-	i = y;
-	while (i < range)
-	{
-		i++;
-		if (map[i][x] == ' ')
-			return (1);
-		if (map[i][x] == '1')
-			break ;
-		/*printf("%c", map[i][x]);*/
-	}
-	if (j == 0 || i == range)
-		return (1);
-	return (0);
+	if ((ft_strchr(str, map[y][x - 1])) == NULL)
+		file_exit(1);
+	if ((ft_strchr(str, map[y][x + 1])) == NULL)
+		file_exit(1);
+	if ((ft_strchr(str, map[y - 1][x])) == NULL)
+		file_exit(1);
+	if ((ft_strchr(str, map[y + 1][x])) == NULL)
+		file_exit(1);
 }
 
-static int check_left_and_right(char **map, int x, int y, int line_len)
+int next_level_map_check(char **map, int len, t_map map_sp, t_player *player)
 {
 	int i;
 	int j;
+	/*s_player player;*/
 
-	j = x;
-	while (j > 0)
-	{
-		j--;
-		if (map[y][j] == ' ')
-			return (1);
-		if (map[y][j] == '1')
-			break ;
-		/*printf("%c", map[y][j]);*/
-	}
-	i = x;
-	while (i < line_len)
-	{
-		if (map[y][i] == ' ')
-			return (1);
-		if (map[y][i] == '1')
-			break ;
-		/*printf("%c", map[y][i]);*/
-		i++;
-	}
-	if (j == 0 || i == line_len)
-		return (1);
-	return (0);
-}
-
-void check_map_elem(char **map, int x, int y, int type)
-{
-	int i;
-	int j;
-	int flag;
-
-	i = x;
-	j = y;
-	flag = 0;
-	/*printf("inside check_map_elem\n");*/
-	if (check_left
-}
-
-int next_level_map_check(char **map, int len, s_map map_sp)
-{
-	int i;
-	int j;
-	s_player player;
-
-	player = init_player(player);
+	/*player = init_player(player);*/
+	len -= 1;
 	i = 1;
 	while (i < len)
 	{
@@ -108,12 +57,14 @@ int next_level_map_check(char **map, int len, s_map map_sp)
 			if (map[i][j] == ' ')
 				j++;
 			if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'E' || \
-				map[i][j] == 'S')
-			{
-				player.direct = map[i][j];
-				player.x = j;
-				player.y = i;
-				check_map_elem(map, 
-
+					map[i][j] == 'S')
+				check_map_elem(map, j, i, player);
+			if (map[i][j] == '0' || map[i][j] == '2')
+				check_map_elem(map, j, i, player);
+			j++;
+		}
+		i++;
+	}
+	printf("really end!!!!!\n");
 	return (0);
 }

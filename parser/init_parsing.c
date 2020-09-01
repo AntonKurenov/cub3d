@@ -6,13 +6,13 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:13:24 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/22 12:17:33 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/25 17:25:02 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int check_set(s_set set)
+int check_set(t_set set)
 {
 	int flag;
 
@@ -51,7 +51,7 @@ int arr_len(char **str_arr)
 	return (i);
 }
 
-int	parse_resolution(char *str1, char *str2, s_set *set, int len)
+int	parse_resolution(char *str1, char *str2, t_set *set, int len)
 {
 	if (len != 3)
 	{
@@ -65,7 +65,7 @@ int	parse_resolution(char *str1, char *str2, s_set *set, int len)
 	return (0);
 }
 
-int	setting_parser(char *line, s_set *set)
+int	setting_parser(char *line, t_set *set)
 {
 	char **str_arr;
 	int len;
@@ -73,8 +73,6 @@ int	setting_parser(char *line, s_set *set)
 
 	str_arr = ft_split(line, ' ');
 	len = arr_len(str_arr);
-	/*printf("len = %d\n", len);*/
-	/*printf("str0 = %s\nstr1 = %s\n", str_arr[0], str_arr[1]);*/
 	ret = 1;
 	if (len == 0)
 		return (0);
@@ -105,15 +103,10 @@ int	setting_parser(char *line, s_set *set)
 	return (ret);
 }
 
-int open_file(char *name, s_set *set)
+static int open_file(char *name, t_set *set, int flag)
 {
-	char *ptr;
 	int fd;
 	char *line;
-	char *tmp;
-	int ret;
-	int count;
-	int flag;
 
 	if ((check_name(name)) == 0)
 		return (0);
@@ -122,20 +115,15 @@ int open_file(char *name, s_set *set)
 		ft_putstr("Error\nBad file descriptor");
 		return (0);
 	}
-	/*printf("name2 = %s\n", name);*/
-	/*printf("fd = %d\n", fd);*/
-	flag = 0;
-	while ((ret = get_next_line(fd, &line)))
+	while (get_next_line(fd, &line))
 	{
 		if ((check_set(*set) != 1) && line[0] != '\0')
-		{
 			setting_parser(line, set);
-			/*if ((setting_parser(line, set) == 1))*/
-				/*return (file_exit(1));*/
-		}
+		else if ((check_set(*set) == 1) && line[0] == '\0' && flag != 0)
+			file_exit(1);
 		else if ((check_set(*set) == 1) && line[0] != '\0')
 		{
-			/*printf("On the way line = %s\n", line);*/
+			flag++;
 			init_map_parser(line, set, 0);
 		}
 		free(line);
@@ -147,16 +135,17 @@ int open_file(char *name, s_set *set)
 int main(int args, char **argv)
 {
 	int i;
-	int n;
-	s_set set;
+	int flag;
+	t_set set;
 
 	i = 1;
+	flag = 0;
 	set = init_set(set);
 	if (args != 2)
 		return (error_manager(1));
 	else if (args == 2)
 	{
-		open_file(argv[1], &set);
+		open_file(argv[1], &set, flag);
 		i++;
 		return (0);
 	}

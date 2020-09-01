@@ -6,13 +6,13 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:14:04 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/22 12:24:49 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/25 17:27:25 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-s_player init_player(s_player new)
+t_player init_player(t_player new)
 {
 	new.x = 0;
 	new.y = 0;
@@ -20,9 +20,9 @@ s_player init_player(s_player new)
 	return (new);
 }
 
-s_col init_colours()
+t_col init_colours()
 {
-	s_col colour;
+	t_col colour;
 
 	colour.ce_red = -1;
 	colour.ce_blue = -1;
@@ -33,7 +33,7 @@ s_col init_colours()
 	return (colour);
 }
 
-s_set	init_set(s_set set)
+t_set	init_set(t_set set)
 {
 	set.colour = init_colours();		
 	set.res_w = 0;
@@ -46,7 +46,7 @@ s_set	init_set(s_set set)
 	return (set);
 }
 
-s_map init_map_specs(s_map map)
+t_map init_map_specs(t_map map)
 {
 	map.height = 0;
 	map.width = 0;

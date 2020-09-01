@@ -6,30 +6,47 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 17:26:36 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/22 15:37:24 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/25 17:27:25 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+static void check_last_line(char *str)
+{
+	int i;
+	int flag;
+	char ptr;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && str[i] != '1')
+			file_exit(1);
+		i++;
+	}
+}
+
 static void check_right_side(char *str, int len)
 {
 	int i;
 	int flag;
-	char *line;
 
-	i = len;
+	printf("inside check_right_side\n");
+	i = len - 1;
 	flag = 0;
+	printf("check rs len = %d\n", len);
 	while (i > 0)
 	{
 		while (str[i] == ' ' && i > 0)
 			i--;
 		if (str[i] == '1')
-			flag++;
-		if (str[i] != '1' && str[i] != ' ' && flag == 0)
+			break ;
+		if (str[i] != '1')
 			file_exit(1);
 		i--;
 	}
+	printf("inside check_right_side\n");
 }
 
 /*
@@ -47,18 +64,21 @@ static int get_len_and_check(char *str)
 
 	i = 0;
 	flag = 0;
-	line_2 = "201NEWS";
 	line = "201 NEWS";
+	line_2 = "201NEWS";
 	printf("inside get_len_and_check\n");
 	while (str[i])
 	{
 		if ((ft_strchr(line, str[i])) == NULL)
+		{
+			printf("str[%d] = %c\n", i, str[i]);
 			file_exit(1);
+		}
 		if (str[i] == '1')
+		{
 			flag++;
+		}
 		if ((ptr = ft_strchr(line_2, str[i])) != NULL && flag == 0)
-			file_exit(1);
-		if (ptr == NULL)
 			file_exit(1);
 		i++;
 	}
@@ -91,7 +111,7 @@ static void line_filler(char **line, int len)
 	free(tmp);
 }
 
-char **map_preparation(char **map, int arr_len, s_map *map_specs)
+char **map_preparation(char **map, int arr_len, t_map *map_specs)
 {
 	int len;
 	int i;
@@ -105,15 +125,18 @@ char **map_preparation(char **map, int arr_len, s_map *map_specs)
 			max_len = len;
 		i++;
 	}
+	check_last_line(map[i - 1]);
 	map_specs->width = max_len;
 	map_specs->height = arr_len;
 	i = 0;
+	printf("end of the map_preparation\n");
 	while (i < arr_len)
 	{
 		if ((len = ft_strlen(map[i])) != max_len)
-			line_filler(&map[i], max_len);		
+			line_filler(&map[i], max_len);
 		printf("%s\n", map[i]);
 		i++;
 	}
+	printf("end of the map_preparation\n");
 	return (map);
 }

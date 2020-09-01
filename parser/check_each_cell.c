@@ -6,18 +6,28 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 12:55:17 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/22 14:59:53 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/08/24 14:41:18 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int check_around(char **map, int x, int y)
+void check_around(char **map, int x, int y)
 {
 	int i;
 	int j;
+	char *str;
 
-	if (map
+	str = "021NEWS";
+	if ((ft_strchr(str, map[y][x-1])) == NULL)
+		file_exit(1);
+	if ((ft_strchr(str, map[y][x+1])) == NULL)
+		file_exit(1);
+	if ((ft_strchr(str, map[y-1][x])) == NULL)
+		file_exit(1);
+	if ((ft_strchr(str, map[y+1][x])) == NULL)
+		file_exit(1);
+}
 
 int check_left(char *line, int j)
 {
