@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 14:26:00 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/25 18:51:17 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/04 12:40:04 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static void map_checker(char **map, t_set *set)
 		i++;
 	}
 	next_level_map_check(map, len, map_specs, &player);
+
 	init_engine(&player, set, &map_specs, map);
 }
 

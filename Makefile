@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 
 HEAD = cub3d.h
 
@@ -11,7 +11,8 @@ PARSER_SRCS = error_handler.c get_next_line.c \
 			  atoi_str.c map_parser.c map_checker.c map_preparation.c \
 			  structures_init.c
 
-ENGINE_SRCS = init_engine.c
+ENGINE_SRCS = init_engine.c structs_for_engine.c \
+			  draw_walls.c math_new.c reset_inter.c
 
 SRCS = 
 
@@ -39,7 +40,7 @@ ALL_FILES = $(PARSER_FILES) $(LIBFT_FILES)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	gcc -g -o $@ $^
+	gcc -g -o $@ $^ libmlx.dylib -framework OpenGL -framework Appkit
 
 #all: $(NAME)
 
@@ -59,7 +60,8 @@ clean:
 re: fclean all
 
 %.o: %.c
-	gcc -g -c $(COMP_FLAGS) -o $@ $<
+	gcc -g -c $(COMP_FLAGS) -o $@ $< 
+
 
 
 .PHONY: all clean fclean re

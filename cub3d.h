@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/01 15:43:59 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/12 19:48:11 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft/libft.h"
 # include "parser/get_next_line.h"
 # include <stdio.h>
+# include <math.h>
 
 # define RAD_CONV 0.0174533
 # define FOV 60
@@ -28,6 +29,7 @@
 # define ARR_LEFT 123
 # define ARR_RIGHT 124
 # define PI 3.1415
+# define B_SIZE 64.0
 
 typedef struct s_colours
 {
@@ -66,13 +68,38 @@ typedef struct s_set
 	char *s_texture;
 } 				t_set;
 
+typedef struct s_inter
+{
+	int vert_grid_x;
+	int vert_grid_y;
+	int hor_grid_x;
+	int hor_grid_y;
+	double v_a_x;
+	double v_a_y;
+	double h_a_y;
+	double h_a_x;
+	double cur_vert_x;
+	double cur_vert_y;
+	double cur_hor_x;
+	double cur_hor_y;
+	double vert_x;
+	double vert_y;
+	double hor_x;
+	double hor_y;
+}	t_inter;
+
 typedef struct	s_data 
 {
 	t_set	*set;
 	t_player *player;
-	int		x;
-	int		y;
+	t_inter	inter;
+	double		pos_x;
+	double		pos_y;
 	int		angle;
+	int		i;
+	int		map_h;
+	int		map_w;
+	double	cur_angle;
 	char	**map;
 	void	*img;
 	char	*addr;
@@ -84,6 +111,22 @@ typedef struct	s_data
 	int		res_h;
 	int		res_w;
 	double	part_angle;
+	double	plane_dist;
+	double	tang;
+	int		map_chk_ret;
+	double	init_a_x;
+	double	init_a_y;
+	int		flag;
+	double	vert_len;
+	double	hor_len;
+	double	hor_x;
+	double	hor_y;
+	double	vert_x;
+	double	vert_y;
+	double	h_a_x;
+	double	h_a_y;
+	double	v_a_x;
+	double	v_a_y;
 }			t_data;
 
 int texture_parser(char *line, t_set *set, int type);
@@ -101,7 +144,11 @@ t_col init_colours();
 t_set	init_set(t_set set);
 t_map init_map_specs(t_map map);
 void init_engine(t_player *player, t_set *set, t_map *map_specs, char **map);
-t_data	init_img(t_data new, t_player *player, char **map, t_set *set);
+t_data	init_img(t_data new, t_player *player, t_map *map_specs, t_set *set);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	draw_walls(t_data *data, double len);
+void receiver(t_data *data);
+int convert_coordinates(t_data *data, int flag);
+void reset_data(t_data *data);
 
 #endif
