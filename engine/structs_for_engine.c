@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 14:08:53 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/08 14:25:31 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/12 20:31:36 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_data	init_img(t_data new, t_player *player, t_map *map_specs, t_set *set)
 	if (player->direct == 'E')
 		new.angle = 0;
 
+	new.mlx = NULL;
 	new.addr = NULL;
 	new.mlx_win = NULL;
 	new.res_h = set->res_h;

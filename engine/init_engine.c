@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 16:02:14 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/07 12:53:20 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/12 20:08:41 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void init_engine(t_player *player, t_set *set, t_map *map_specs, char **map)
 	/*img.res_h = (res_h < set->res_h) ? res_h : set->res_h;*/
 	/*img.res_w = (res_w < set->res_w) ? res_w : set->res_w;*/
 	printf("part_angle = %f\n", img.part_angle);
+
 	img.mlx_win = mlx_new_window(img.mlx, img.res_w, img.res_h, "cub3D");
 	/*mlx_hook(img.mlx_win, 2, 1L<<2, next_frame, &img);*/
 	img.img = mlx_new_image(img.mlx, img.res_w, img.res_h);

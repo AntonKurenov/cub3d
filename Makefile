@@ -12,7 +12,8 @@ PARSER_SRCS = error_handler.c get_next_line.c \
 			  structures_init.c
 
 ENGINE_SRCS = init_engine.c structs_for_engine.c \
-			  draw_walls.c math_new.c reset_inter.c
+			  draw_walls.c math_new.c reset_inter.c check_horizontal.c \
+			  check_vertical.c 
 
 SRCS = 
 
@@ -53,9 +54,8 @@ clean:
 	rm -f $(OBJS)
 	#@echo "all .o files has been deleted"
 
-#fclean: clean
-	#@rm -f $(NAME)
-	#@echo "libftprintf.a has been deleted"
+fclean: clean
+	rm -f $(NAME)
 
 re: fclean all
 

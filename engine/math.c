@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 17:26:11 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/12 14:18:40 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/12 20:09:08 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,7 +263,6 @@ void receiver(t_data *data)
 	while (i < data->res_w)
 	{
 		printf("_____________________________________\n");
-		reset_inter(data);
 		data->i = i;
 		init_angle = start_angle - ((double)i) * data->part_angle;
 		printf("i = %d\n", i);

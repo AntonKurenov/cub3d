@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/12 19:48:11 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/13 15:12:17 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,31 +68,10 @@ typedef struct s_set
 	char *s_texture;
 } 				t_set;
 
-typedef struct s_inter
-{
-	int vert_grid_x;
-	int vert_grid_y;
-	int hor_grid_x;
-	int hor_grid_y;
-	double v_a_x;
-	double v_a_y;
-	double h_a_y;
-	double h_a_x;
-	double cur_vert_x;
-	double cur_vert_y;
-	double cur_hor_x;
-	double cur_hor_y;
-	double vert_x;
-	double vert_y;
-	double hor_x;
-	double hor_y;
-}	t_inter;
-
 typedef struct	s_data 
 {
 	t_set	*set;
 	t_player *player;
-	t_inter	inter;
 	double		pos_x;
 	double		pos_y;
 	int		angle;
@@ -117,6 +96,7 @@ typedef struct	s_data
 	double	init_a_x;
 	double	init_a_y;
 	int		flag;
+	double	step_ang;
 	double	vert_len;
 	double	hor_len;
 	double	hor_x;
@@ -150,5 +130,7 @@ void	draw_walls(t_data *data, double len);
 void receiver(t_data *data);
 int convert_coordinates(t_data *data, int flag);
 void reset_data(t_data *data);
+void get_horiz_inter(t_data *data, int flag);
+void get_vert_inter(t_data *data, int flag);
 
 #endif

@@ -1,7 +1,9 @@
 R 1920 1080
 
 NO ./north_text 
+
 SO ./south_text
+
 WE ./west_text
 EA ./east_text
 S ./sprite_text
@@ -10,8 +12,7 @@ F 220,100,234
 C 225,30,123
 
 111111
-111111
-100101
-11N101
+100001
+10N001
 111001
 111111

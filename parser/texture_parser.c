@@ -6,13 +6,13 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 15:01:41 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/16 19:27:31 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/12 20:17:10 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int check_file_name(char **name, s_set *set, int type)
+static int check_file_name(char **name, t_set *set, int type)
 {
 	int f;
 
@@ -37,7 +37,7 @@ static int check_file_name(char **name, s_set *set, int type)
 	return (0);
 }
 
-int colour_parser(char *line, s_set *set, int type)
+int colour_parser(char *line, t_set *set, int type)
 {
 	if (type == 1)
 	{
@@ -59,7 +59,7 @@ int colour_parser(char *line, s_set *set, int type)
 	return(0);
 }
 
-int texture_parser(char *line, s_set *set, int type)
+int texture_parser(char *line, t_set *set, int type)
 {
 	int i;
 	char *name;
