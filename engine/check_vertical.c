@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 15:10:50 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/13 20:56:12 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:32:14 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,56 +42,25 @@ static void get_vert_len(t_data *data, int flag)
 	data->vert_len = sqrt(len_x * len_x + len_y * len_y);	
 }
 
-static int check_grid(t_data *data, double v_x, double v_y)
+static void vert_check(t_data *data)
 {
-	int x;
-	int y;
-	double new_x;
-	double new_y;
-
-	new_x = data->vert_x + v_x;
-	new_y = data->vert_y + v_y;
-	if (new_x > 0 && new_y > 0)
-	{
-		x = (int)(round(new_x) / 64);
-		y = (int)(round(new_y) / 64);
-		if (x < data->map_w && y < data->map_h)
-		{
-			if (data->map[y][x] == '0')
-			{
-				data->vert_x += v_x;
-				data->vert_y += v_y;
-				return (0);
-			}
-			else
-				return (1);
-		}
-		return (-1);
-	}
-	return (-1);
-}
-
-static void check_vert_map(t_data *data)
-{
-	int x;
-	int y;
 	int ret;
 
+	ret = 0;
 	data->v_a_x = (data->flag == 1 || data->flag == 4) ? B_SIZE: -B_SIZE;
 	data->v_a_y = (data->flag == 3 || data->flag == 4) ? B_SIZE * data->tang : -(B_SIZE * data->tang);
-	/*ret = check_grid(data, data->h_a_x, data->h_a_y);*/
-	/*if (ret == 1 || ret == -1)*/
-		/*get_vert_len(data, data->flag);*/
-	printf("Check vert map before while\ndata->vert_x = %f\ndata->vert_y = %f\n", data->vert_x, data->vert_y);
-	printf("|_________|\n");
-	while ((ret = check_grid(data, data->v_a_x, data->v_a_y)) != -1)
+	printf("2 vert: a_x = %f || a_y = %f\n", data->vert_x, data->vert_y);
+	while ((ret = check_map(data, data->vert_x, data->vert_y)) == 0)
 	{
+		printf("ret = %d\n", ret);
 		if (ret == 1)
 			break ;
-		printf("check_vert_map\nx = %d  y = %d\n", x, y);
+		if (ret == -1)
+			break ;
+		data->vert_x = ((data->vert_x + data->v_a_x) > 0) ? (data->vert_x += data->v_a_x) : 0;
+		data->vert_y = ((data->vert_y + data->v_a_y) > 0) ? (data->vert_y += data->v_a_y) : 0;
+		printf("inside while vert_x = %f  vert_y = %f\n", data->vert_x, data->vert_y);
 	}
-	printf("|_________|\n");
-	printf("data->vert_x = %f\ndata->vert_y = %f\n", data->vert_x, data->vert_y);
 	get_vert_len(data, data->flag);
 }
 
@@ -116,8 +85,8 @@ void get_vert_inter(t_data *data, int flag)
 	printf("1 vert: a_x = %f || a_y = %f\n", a_x, a_y);
 	data->vert_x = a_x;
 	data->vert_y = a_y;
-	ret = check_grid(data, 0, 0);
+	ret = check_map(data, a_x, a_y);
 	if (ret == 1 || ret == -1)
 		get_vert_len(data, data->flag);
-	check_vert_map(data);
+	vert_check(data);
 }

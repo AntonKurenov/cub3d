@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/13 15:12:17 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/16 20:04:03 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define FOV 60
 # define H_FOV 30
 # define BUTTON_W 13
+# define BUTTON_ESC 53
 # define BUTTON_A 0
 # define BUTTON_S 1
 # define BUTTON_D 2
@@ -132,5 +133,11 @@ int convert_coordinates(t_data *data, int flag);
 void reset_data(t_data *data);
 void get_horiz_inter(t_data *data, int flag);
 void get_vert_inter(t_data *data, int flag);
+int check_map(t_data *data, double x, double y);
+void close_win(t_data *data);
+void move_up(t_data *data);
+void turn_left(t_data *data);
+void move_down(t_data *data);
+void turn_right(t_data *data);
 
 #endif

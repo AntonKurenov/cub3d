@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 17:26:11 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/13 20:18:34 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/16 20:11:33 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void receiver(t_data *data)
 	/*while (i < 10)*/
 	while (i < data->res_w)
 	{
-		printf("_____________________________________\n");
+		printf("_____________________________________\n\n");
 		/*reset_data(data);*/
 		data->i = i;
 		data->step_ang = ((double)i) * data->part_angle;
@@ -80,7 +80,7 @@ void receiver(t_data *data)
 			data->tang = tan(angle * RAD_CONV);
 			len_compare(angle, data, i, 3);	
 		}
-		if (init_angle >= 270 && init_angle <= 360)
+		if (init_angle >= 270 && init_angle < 360)
 		{
 			angle = 360 - init_angle;
 			data->tang = tan(angle * RAD_CONV);
@@ -88,4 +88,6 @@ void receiver(t_data *data)
 		}
 		i++;
 	}
+	/*mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);*/
+	/*mlx_loop(data->mlx);*/
 }

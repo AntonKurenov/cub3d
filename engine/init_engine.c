@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 16:02:14 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/12 20:08:41 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/16 20:03:48 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,40 +20,33 @@ void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int	next_frame(int key, t_data *img)
+int	next_frame(int key, t_data *data)
 {
 	int i;
 	int j;
 	printf("inside next_frame\n");
-	/*img->img = mlx_new_image(img->mlx, img->set->res_w, img->set->res_h);*/
-	/*img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length,*/
-								 /*&img->endian);*/
 
 	i = 0;
 	j = 0;
-	while (i < 100)
-	{
-		j = 0;
-		while (j < 100)
-		{
-			my_mlx_pixel_put(img, j, i, 0x0000FF00);
-			j++;
-		}
-		i++;
-	}
-	receiver(img);
-	printf("after receiver\n");
-	/*if (key == 53)*/
-		/*close(img);*/
-	/*if (key == 13)*/
-		/*move_up(img);*/
-	/*if (key == 0)*/
-		/*move_left(img);*/
+	if (key == BUTTON_ESC)
+		close_win(data);
+	if (key == BUTTON_W)
+		move_up(data);
+	if (key == ARR_LEFT)
+		turn_left(data);
+	if (key == BUTTON_S)
+		move_down(data);
+	if (key == ARR_RIGHT)
+		turn_right(data);
 	/*if (key == 1)*/
 		/*move_down(img);*/
 	/*if (key == 2)*/
 		/*move_right(img);*/
-	/*mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);*/
+	printf("datadat\n");
+	receiver(data);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
+	mlx_loop(data->mlx);
+	printf("after receiver\n");
 	return (0);
 }
 
@@ -79,8 +72,8 @@ void init_engine(t_player *player, t_set *set, t_map *map_specs, char **map)
 	img.img = mlx_new_image(img.mlx, img.res_w, img.res_h);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								 &img.endian);
-
-	next_frame(1, &img);
+	receiver(&img);
+	mlx_hook(img.mlx_win, 2, 1L<<2, next_frame, &img);
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
 	mlx_loop(img.mlx);
 }

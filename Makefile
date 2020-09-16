@@ -13,7 +13,7 @@ PARSER_SRCS = error_handler.c get_next_line.c \
 
 ENGINE_SRCS = init_engine.c structs_for_engine.c \
 			  draw_walls.c math_new.c reset_inter.c check_horizontal.c \
-			  check_vertical.c 
+			  check_vertical.c movements.c
 
 SRCS = 
 

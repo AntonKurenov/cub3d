@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 15:05:58 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/13 20:56:12 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:32:14 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,57 +42,46 @@ static void get_hor_len(t_data *data, int flag)
 	data->hor_len = sqrt(len_x * len_x + len_y * len_y);	
 }
 
-static int check_grid(t_data *data, double h_x, double h_y)
+int check_map(t_data *data, double x, double y)
 {
-	int x;
-	int y;
-	double new_x;
-	double new_y;
+	int new_x;
+	int new_y;
 
-	new_x = data->hor_x + h_x;
-	new_y = data->hor_y + h_y;
-	if (new_x > 0 && new_y > 0)
-	{
-		x = (int)(round(new_x) / 64);
-		y = (int)(round(new_y) / 64);
-		if (x < data->map_w && y < data->map_h)
-		{
-			if (data->map[y][x] == '0')
-			{
-				data->hor_x += h_x;
-				data->hor_y += h_y;
-				return (0);
-			}
-			else
-				return (1);
-		}
+	if (x < 0 || y < 0)
 		return (-1);
+	new_x = (int)(floor(x / 64));
+	new_y = (int)(floor(y / 64));
+	printf("new_x = %d  new_y = %d\n", new_x, new_y);
+	if (new_x > data->map_w || new_y > data->map_h)
+		return (-1);
+	printf("map = %c\n", data->map[new_y][new_x]);
+	if (data->map[new_y][new_x] == 49)
+	{
+		printf("map = %c\n", data->map[new_y][new_x]);
+		return (1);
 	}
-	return (-1);
+	return (0);
 }
 
-static void check_horiz_map(t_data *data)
+static void horiz_check(t_data *data)
 {
-	int x;
-	int y;
 	int ret;
 
-	x = 1;
-	y = 1;
+	ret = 0;
 	data->h_a_y = (data->flag == 1 || data->flag == 2) ? -B_SIZE : B_SIZE;
 	data->h_a_x = (data->flag == 1 || data->flag == 4) ? B_SIZE / data->tang : -(B_SIZE / data->tang);
-	/*ret = check_grid(data, data->h_a_x, data->h_a_y);*/
-	/*if (ret == 1 || ret == -1)*/
-		/*get_hor_len(data, data->flag);*/
-	printf("Check horiz map before while\ndata->hor_x = %f\ndata->hor_y = %f\n", data->hor_x, data->hor_y);
-	printf("|_________|\n");
-	while ((ret = check_grid(data, data->h_a_x, data->h_a_y)) != -1)
+	printf("horiz_check step_x = %f step_y = %f\n", data->h_a_x, data->h_a_y);
+	while ((ret = check_map(data, data->hor_x, data->hor_y)) == 0)
 	{
+		printf("ret = %d\n", ret);
 		if (ret == 1)
 			break ;
+		if (ret == -1)
+			break ;
+		data->hor_x = ((data->hor_x + data->h_a_x) > 0) ? (data->hor_x += data->h_a_x) : 0;
+		data->hor_y = ((data->hor_y + data->h_a_y) > 0) ? (data->hor_y += data->h_a_y) : 0;
+		printf("inside while hor_x = %f  hor_y = %f\n", data->hor_x, data->hor_y);
 	}
-	printf("|_________|\n");
-	printf("data->hor_x = %f\ndata->hor_y = %f\n", data->hor_x, data->hor_y);
 	get_hor_len(data, data->flag);
 }
 
@@ -111,14 +100,14 @@ void get_horiz_inter(t_data *data, int flag)
 	if (flag == 2)
 		a_x = data->pos_x - (data->pos_y - a_y) / data->tang;
 	if (flag == 3)
-		a_x = data->pos_x - (data->pos_y + a_y) / data->tang;
+		a_x = data->pos_x - (a_y - data->pos_y) / data->tang;
 	if (flag == 4)
-		a_x = data->pos_x + (data->pos_y + a_y) / data->tang;
+		a_x = data->pos_x + (a_y - data->pos_y) / data->tang;
 	data->hor_x = a_x;
 	data->hor_y = a_y;
 	printf("1 horiz: a_x = %f || a_y = %f\n", a_x, a_y);
-	ret = check_grid(data, 0, 0);
+	ret = check_map(data, a_x, a_y);
 	if (ret == 1 || ret == -1)
 		get_hor_len(data, data->flag);
-	check_horiz_map(data);
+	horiz_check(data);
 }
