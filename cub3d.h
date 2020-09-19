@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/16 20:04:03 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/18 16:39:30 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define ARR_RIGHT 124
 # define PI 3.1415
 # define B_SIZE 64.0
+# define TURN_ANG 5
+# define STEP 10
 
 typedef struct s_colours
 {
@@ -53,8 +55,6 @@ typedef struct s_map
 {
 	int width;
 	int height;
-	//int x;
-	//int y;
 }		t_map;
 
 typedef struct s_set
@@ -108,7 +108,19 @@ typedef struct	s_data
 	double	h_a_y;
 	double	v_a_x;
 	double	v_a_y;
+	double	map_size_y;
+	double	map_size_x;
 }			t_data;
+
+typedef struct s_angle
+{
+	int 	init_angle;
+	int		new_angle;
+	double	new_x;
+	double	new_y;
+	int		mid_angle;
+	int		key;
+}			t_angle;
 
 int texture_parser(char *line, t_set *set, int type);
 int error_manager(int num);
@@ -135,9 +147,11 @@ void get_horiz_inter(t_data *data, int flag);
 void get_vert_inter(t_data *data, int flag);
 int check_map(t_data *data, double x, double y);
 void close_win(t_data *data);
-void move_up(t_data *data);
 void turn_left(t_data *data);
-void move_down(t_data *data);
 void turn_right(t_data *data);
+void move_s_and_w(t_data *data, t_angle *ang);
+t_angle reset_angle(t_angle ang, t_data *data, int key);
+void convert_angle(t_angle *ang);
+void move_d_and_a(t_data *data, t_angle *ang);
 
 #endif

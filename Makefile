@@ -12,8 +12,9 @@ PARSER_SRCS = error_handler.c get_next_line.c \
 			  structures_init.c
 
 ENGINE_SRCS = init_engine.c structs_for_engine.c \
-			  draw_walls.c math_new.c reset_inter.c check_horizontal.c \
-			  check_vertical.c movements.c
+			  draw_walls.c check_horizontal.c \
+			  check_vertical.c movements.c convert_and_reset.c \
+			  math.c
 
 SRCS = 
 
@@ -41,7 +42,7 @@ ALL_FILES = $(PARSER_FILES) $(LIBFT_FILES)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	gcc -g -o $@ $^ libmlx.dylib -framework OpenGL -framework Appkit
+	gcc -g -o $@ $^ -framework OpenGL -framework Appkit libmlx.dylib 
 
 #all: $(NAME)
 

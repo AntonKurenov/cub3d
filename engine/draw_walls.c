@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 15:19:04 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/12 20:21:15 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/17 17:08:08 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ void	draw_walls(t_data *data, double len)
 	int i;
 	int j;
 
-	printf("inside draw_walls\n");
-	printf("plane_dist = %f\n", data->plane_dist);
+	/*printf("inside draw_walls\n");*/
+	/*printf("plane_dist = %f\n", data->plane_dist);*/
 	wall_len = (int)(floor(data->plane_dist / len));
-	printf("wall_len = %d\n", wall_len);
+	/*printf("wall_len = %d\n", wall_len);*/
 	half_wall_len = wall_len >> 1;
 	half_len = wall_len >> 1;
 	i = 0;
 	j = 0;
-	printf("len = %f\n", len);
+	/*printf("len = %f\n", len);*/
 	half_res = data->res_h / 2;
 	start_pixel = half_res - half_wall_len;
 
