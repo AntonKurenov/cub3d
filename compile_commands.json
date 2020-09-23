@@ -6,10 +6,10 @@
    "-g", 
    "-c", 
    "-o", 
-   "libft/ft_atoi.o", 
-   "libft/ft_atoi.c"
+   "parser/map_parser.o", 
+   "parser/map_parser.c"
   ], 
-  "file": "libft/ft_atoi.c"
+  "file": "parser/map_parser.c"
  }, 
  {
   "directory": "/Users/elovegoo/projects/cub3d_git", 
@@ -22,6 +22,18 @@
    "parser/texture_parser.c"
   ], 
   "file": "parser/texture_parser.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/draw_walls.o", 
+   "engine/draw_walls.c"
+  ], 
+  "file": "engine/draw_walls.c"
  }, 
  {
   "directory": "/Users/elovegoo/projects/cub3d_git", 
@@ -126,6 +138,18 @@
    "-g", 
    "-c", 
    "-o", 
+   "engine/convert_and_reset.o", 
+   "engine/convert_and_reset.c"
+  ], 
+  "file": "engine/convert_and_reset.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
    "libft/ft_substr.o", 
    "libft/ft_substr.c"
   ], 
@@ -150,10 +174,46 @@
    "-g", 
    "-c", 
    "-o", 
+   "engine/math.o", 
+   "engine/math.c"
+  ], 
+  "file": "engine/math.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
    "parser/map_checker.o", 
    "parser/map_checker.c"
   ], 
   "file": "parser/map_checker.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/check_horizontal.o", 
+   "engine/check_horizontal.c"
+  ], 
+  "file": "engine/check_horizontal.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/init_engine.o", 
+   "engine/init_engine.c"
+  ], 
+  "file": "engine/init_engine.c"
  }, 
  {
   "directory": "/Users/elovegoo/projects/cub3d_git", 
@@ -174,6 +234,30 @@
    "-g", 
    "-c", 
    "-o", 
+   "engine/movements.o", 
+   "engine/movements.c"
+  ], 
+  "file": "engine/movements.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/structs_for_engine.o", 
+   "engine/structs_for_engine.c"
+  ], 
+  "file": "engine/structs_for_engine.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
    "libft/ft_isdigit.o", 
    "libft/ft_isdigit.c"
   ], 
@@ -186,10 +270,10 @@
    "-g", 
    "-c", 
    "-o", 
-   "parser/map_parser.o", 
-   "parser/map_parser.c"
+   "libft/ft_atoi.o", 
+   "libft/ft_atoi.c"
   ], 
-  "file": "parser/map_parser.c"
+  "file": "libft/ft_atoi.c"
  }, 
  {
   "directory": "/Users/elovegoo/projects/cub3d_git", 
@@ -222,6 +306,18 @@
    "-g", 
    "-c", 
    "-o", 
+   "parser/structures_init.o", 
+   "parser/structures_init.c"
+  ], 
+  "file": "parser/structures_init.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
    "parser/atoi_str.o", 
    "parser/atoi_str.c"
   ], 
@@ -238,6 +334,18 @@
    "libft/ft_split.c"
   ], 
   "file": "libft/ft_split.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/check_vertical.o", 
+   "engine/check_vertical.c"
+  ], 
+  "file": "engine/check_vertical.c"
  }, 
  {
   "directory": "/Users/elovegoo/projects/cub3d_git", 

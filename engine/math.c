@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 17:26:11 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/19 15:56:52 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/23 21:47:50 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,20 @@ void len_compare(double angle, t_data *data, int i, int flag)
 	get_horiz_inter(data, flag);
 	get_vert_inter(data, flag);
 	/*printf("len_vert = %f\nlen_horiz = %f\n", len_vert, len_horiz);*/
-	/*printf("||||||||||||||||||||||||||||||||||||\n");*/
 	/*printf("hor_len = %f\nlen_vert = %f\n||||||||||||||||||||||||\n", data->hor_len, data->vert_len);*/
 	if (data->hor_len >= data->vert_len)
 	{
+		data->is_vert = 1;
 		len = data->vert_len * cos(corr_angle * RAD_CONV);
-		draw_walls(data, len);
+		which_texture(data, len, flag);
+		/*draw_walls(data, len);*/
 	}
 	else
 	{
+		data->is_vert = 0;
 		len = data->hor_len * cos(corr_angle * RAD_CONV);
-		draw_walls(data, len);
+		which_texture(data, len, flag);
+		/*draw_walls(data, len);*/
 	}
 }
 
@@ -63,6 +66,7 @@ void receiver(t_data *data)
 	double start_angle;
 
 	/*printf("pos_x = %f\npos_y = %f\n", data->pos_x, data->pos_y);*/
+	/*open_textr(data);*/
 	i = 0;
 	start_angle = (double)((data->angle + H_FOV));
 	data->init_a_x = (floor(data->pos_x / B_SIZE)) * B_SIZE;

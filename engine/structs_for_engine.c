@@ -6,29 +6,55 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 14:08:53 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/17 15:40:45 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/23 18:54:32 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+void	set_angle(t_data *new, t_player *player)
+{
+	if (player->direct == 'N')
+		new->angle = 90;
+	if (player->direct == 'S')
+		new->angle = 270;
+	if (player->direct == 'W')
+		new->angle = 180;
+	if (player->direct == 'E')
+		new->angle = 0;
+}
+
 void	next_step_init(t_data *data)
 {
+	int i;
+
+	i = 0;
 	data->map_size_y = data->map_h * B_SIZE;
 	data->map_size_x = data->map_w * B_SIZE;
+	while (i < 4)
+	{
+		data->textr[i] = (t_tex *)malloc(sizeof(t_tex));
+		if (i == 0)
+			data->textr[i]->name = data->set->no_texture;
+		else if (i == 1)
+			data->textr[i]->name = data->set->so_texture;
+		else if (i == 2)
+			data->textr[i]->name = data->set->we_texture;
+		else if (i == 3)
+			data->textr[i]->name = data->set->ea_texture;
+		printf("i = %d\n", i);
+		data->textr[i]->t_addr = NULL;
+		data->textr[i]->t_img = NULL;
+		printf("name = %s\n", data->textr[i]->name);
+		i++;
+	}
+	printf("||||||||||||||||||||||9191||||||||||\n");
+	/*open_textr(data);*/
 }
 
 t_data	init_img(t_data new, t_player *player, t_map *map_specs, t_set *set)
 {
-	if (player->direct == 'N')
-		new.angle = 90;
-	if (player->direct == 'S')
-		new.angle = 270;
-	if (player->direct == 'W')
-		new.angle = 180;
-	if (player->direct == 'E')
-		new.angle = 0;
-
+	set_angle(&new, player);
 	new.mlx = NULL;
 	new.addr = NULL;
 	new.mlx_win = NULL;

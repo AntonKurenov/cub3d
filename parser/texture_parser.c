@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 15:01:41 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/12 20:17:10 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/23 16:47:28 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int texture_parser(char *line, t_set *set, int type)
 	printf("line inside tex_par = %s\n", line);
 	if (ft_strncmp(line, "./", 2) == 0)
 	{
-		name = ft_substr(line, 2, ft_strlen(line));
+		name = ft_substr(line, 0, ft_strlen(line));
 		printf("line inside tex_par = %s\n", line);
 		printf("name of texture = |%s|\n", name);
 		if (check_file_name(&name, set, type) == 1)

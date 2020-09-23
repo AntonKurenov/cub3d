@@ -1,12 +1,12 @@
-R 1280 720
+R 1200 700
 
-NO ./north_text 
+NO ./northwall_64x64.xpm
 
-SO ./south_text
+SO ./northwall_64x64.xpm
+WE ./northwall_64x64.xpm
+EA ./northwall_64x64.xpm
+S ./northwall_64x64.xpm
 
-WE ./west_text
-EA ./east_text
-S ./sprite_text
 F 220,100,234
 
 C 225,30,123

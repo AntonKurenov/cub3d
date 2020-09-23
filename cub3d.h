@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/18 16:39:30 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/23 14:13:48 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,27 @@ typedef struct s_set
 	char *s_texture;
 } 				t_set;
 
+typedef struct s_tex
+{
+	int		flag;
+	char	*name;
+	int		*t_addr;
+	void	*t_img;
+	int		bpp;
+	int		s_line;
+	int		end;
+	int		h;
+	int		w;
+	int		some_variable;
+	int		sq_vert;
+	int		sq_hor;
+}			t_tex;
+
 typedef struct	s_data 
 {
 	t_set	*set;
 	t_player *player;
+	t_tex		*textr[4];
 	double		pos_x;
 	double		pos_y;
 	int		angle;
@@ -82,7 +99,7 @@ typedef struct	s_data
 	double	cur_angle;
 	char	**map;
 	void	*img;
-	char	*addr;
+	int		*addr;
 	int 	bits_per_pixel;
 	int 	line_length;
 	int 	endian;
@@ -110,6 +127,10 @@ typedef struct	s_data
 	double	v_a_y;
 	double	map_size_y;
 	double	map_size_x;
+	int		is_vert;
+	double	percent;
+	int		pph;
+	int		place;
 }			t_data;
 
 typedef struct s_angle
@@ -153,5 +174,9 @@ void move_s_and_w(t_data *data, t_angle *ang);
 t_angle reset_angle(t_angle ang, t_data *data, int key);
 void convert_angle(t_angle *ang);
 void move_d_and_a(t_data *data, t_angle *ang);
+void	open_textr(t_data *data);
+double	get_percent(t_data *data, double len);
+void	get_textr_addr(t_data *data, int wall_len, int i);
+void	which_texture(t_data *data, double len, int flag);
 
 #endif
