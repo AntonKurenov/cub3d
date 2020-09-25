@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 14:08:53 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/23 18:54:32 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/25 16:37:47 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	next_step_init(t_data *data)
 	i = 0;
 	data->map_size_y = data->map_h * B_SIZE;
 	data->map_size_x = data->map_w * B_SIZE;
+	get_colour(data);
+	data->half_res = data->res_h >> 1;
 	while (i < 4)
 	{
 		data->textr[i] = (t_tex *)malloc(sizeof(t_tex));
@@ -45,11 +47,8 @@ void	next_step_init(t_data *data)
 		printf("i = %d\n", i);
 		data->textr[i]->t_addr = NULL;
 		data->textr[i]->t_img = NULL;
-		printf("name = %s\n", data->textr[i]->name);
 		i++;
 	}
-	printf("||||||||||||||||||||||9191||||||||||\n");
-	/*open_textr(data);*/
 }
 
 t_data	init_img(t_data new, t_player *player, t_map *map_specs, t_set *set)

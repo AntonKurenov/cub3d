@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 16:02:14 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/23 20:29:39 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/24 11:21:36 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void init_engine(t_player *player, t_set *set, t_map *map_specs, char **map)
 	img.img = mlx_new_image(img.mlx, img.res_w, img.res_h);
 	img.addr = (int*)mlx_get_data_addr(img.img, &img.bits_per_pixel, \
 			&img.line_length, &img.endian);
-	/*t_addr = mlx_xpm_file_to_image(img.mlx, "./northwall_64x64.xpm", &w, &h);*/
-	/*printf("%p\n", t_addr);*/
 	open_textr(&img);
 	receiver(&img);
 	mlx_hook(img.mlx_win, 2, 1L<<2, next_frame, &img);

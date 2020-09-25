@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 11:14:51 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/19 11:46:23 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/25 10:43:05 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_angle reset_angle(t_angle ang, t_data *data, int key)
 	ang.key = key;
 	ang.mid_angle = 0;
 	ang.new_angle = 0;
-	printf("ang.init_angle = %d\n", ang.init_angle);
+	/*printf("ang.init_angle = %d\n", ang.init_angle);*/
 	return (ang);
 }
 
@@ -43,7 +43,7 @@ void convert_angle(t_angle *ang)
 		ang->new_angle = ang->mid_angle - 180;
 	if (ang->mid_angle > 270 && ang->mid_angle <= 360)
 		ang->new_angle = 360 - ang->mid_angle;
-	printf("ang->new_angle = %d\n", ang->new_angle);
+	/*printf("ang->new_angle = %d\n", ang->new_angle);*/
 	ang->new_x = cos(ang->new_angle * RAD_CONV) * STEP;
 	ang->new_y = sin(ang->new_angle * RAD_CONV) * STEP;
 }

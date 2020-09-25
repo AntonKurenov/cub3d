@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/19 15:52:37 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/23 20:46:55 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/24 12:02:22 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void	open_textr(t_data *data)
 			write(1, "Error\nWrong texture\n", 20); 
 			exit (0);
 		}
-		data->textr[i]->t_addr = (int*)mlx_get_data_addr(data->textr[i]->t_img, \
+		data->textr[i]->t_addr = (int*)mlx_get_data_addr(data->textr[i]->t_img,\
 		&data->textr[i]->bpp, &data->textr[i]->s_line, &data->textr[i]->end);
+		printf("textr[%d] = %s\n", i, data->textr[i]->name);
 		i++;
 	}
 }

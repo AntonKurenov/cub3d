@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 15:10:53 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/19 14:52:00 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/25 10:43:05 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void move_s_and_w(t_data *data, t_angle *ang)
 	double new_y;
 
 	convert_angle(ang);
-	printf("data->angle = %d\nangle = %d\n", data->angle, ang->new_angle);
+	/*printf("data->angle = %d\nangle = %d\n", data->angle, ang->new_angle);*/
 	if (ang->key == BUTTON_W)
 	{
 		new_x = ((data->angle >= 0 && data->angle < 90) || \
@@ -60,8 +60,8 @@ void move_d_and_a(t_data *data, t_angle *ang)
 	double new_y;
 
 	convert_angle(ang);
-	printf("init_angle = %d\n", ang->init_angle);
-	printf("angle d_and_a = %d\n", ang->new_angle);
+	/*printf("init_angle = %d\n", ang->init_angle);*/
+	/*printf("angle d_and_a = %d\n", ang->new_angle);*/
 	if (ang->key == BUTTON_D)
 	{
 		new_x = (ang->init_angle >= 0 && ang->init_angle < 180) \

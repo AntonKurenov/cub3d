@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/23 14:13:48 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/25 17:40:40 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define ARR_RIGHT 124
 # define PI 3.1415
 # define B_SIZE 64.0
-# define TURN_ANG 5
-# define STEP 10
+# define TURN_ANG 4
+# define STEP 7
 
 typedef struct s_colours
 {
@@ -106,6 +106,7 @@ typedef struct	s_data
 	void 	*mlx;
 	void	*mlx_win;
 	int		res_h;
+	int		half_res;
 	int		res_w;
 	double	part_angle;
 	double	plane_dist;
@@ -131,6 +132,9 @@ typedef struct	s_data
 	double	percent;
 	int		pph;
 	int		place;
+	int		vert_flag;
+	int		floor;
+	int		ceil;
 }			t_data;
 
 typedef struct s_angle
@@ -178,5 +182,8 @@ void	open_textr(t_data *data);
 double	get_percent(t_data *data, double len);
 void	get_textr_addr(t_data *data, int wall_len, int i);
 void	which_texture(t_data *data, double len, int flag);
+int check_map_for_inter(t_data *data, double x, double y);
+void	get_colour(t_data *data);
+void	draw_ceil_and_floor(t_data *data, double wall_len);
 
 #endif

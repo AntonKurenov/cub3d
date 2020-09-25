@@ -6,19 +6,35 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 15:10:50 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/17 17:09:22 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/25 10:34:06 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int check_map(t_data *data, double x, double y)
+{
+	int new_x;
+	int new_y;
+
+	if (x < 0 || y < 0)
+		return (-1);
+	new_x = (int)(floor(x / 64));
+	new_y = (int)(floor(y / 64));
+	if (new_x > data->map_w || new_y > data->map_h || new_x < 0 || new_y < 0)
+		return (-1);
+	if (data->map[new_y][new_x] == 49)
+	{
+		return (1);
+	}
+	return (0);
+}
 
 static void get_vert_len(t_data *data, int flag)
 {
 	double len_x;
 	double len_y;
 
-	/*printf("a_x inside get_vert_len = %f\n", data->vert_x);*/
-	/*printf("a_x inside get_vert_len = %f\n", data->vert_y);*/
 	if (flag == 1)
 	{
 		len_x = data->vert_x - data->pos_x;
@@ -48,18 +64,18 @@ static void vert_check(t_data *data)
 
 	ret = 0;
 	data->v_a_x = (data->flag == 1 || data->flag == 4) ? B_SIZE: -B_SIZE;
-	data->v_a_y = (data->flag == 3 || data->flag == 4) ? B_SIZE * data->tang : -(B_SIZE * data->tang);
-	/*printf("2 vert: a_x = %f || a_y = %f\n", data->vert_x, data->vert_y);*/
-	while ((ret = check_map(data, data->vert_x, data->vert_y)) == 0)
+	data->v_a_y = (data->flag == 3 || data->flag == 4) ? B_SIZE * data->tang :\
+				  -(B_SIZE * data->tang);
+	while ((ret = check_map_for_inter(data, data->vert_x, data->vert_y)) == 0)
 	{
-		/*printf("ret = %d\n", ret);*/
 		if (ret == 1)
 			break ;
 		if (ret == -1)
 			break ;
-		data->vert_x = ((data->vert_x + data->v_a_x) > 0) ? (data->vert_x += data->v_a_x) : 0;
-		data->vert_y = ((data->vert_y + data->v_a_y) > 0) ? (data->vert_y += data->v_a_y) : 0;
-		/*printf("inside while vert_x = %f  vert_y = %f\n", data->vert_x, data->vert_y);*/
+		data->vert_x = ((data->vert_x + data->v_a_x) > 0) ?\
+					   (data->vert_x += data->v_a_x) : 0;
+		data->vert_y = ((data->vert_y + data->v_a_y) > 0) ?\
+					   (data->vert_y += data->v_a_y) : 0;
 	}
 	get_vert_len(data, data->flag);
 }
@@ -72,7 +88,9 @@ void get_vert_inter(t_data *data, int flag)
 	int		y;
 	int		ret;
 
-	a_x = (flag == 1 || flag == 4) ? (data->init_a_x + B_SIZE) : (data->init_a_x - 1);
+	data->vert_flag = 1;
+	a_x = (flag == 1 || flag == 4) ? (data->init_a_x + B_SIZE) :\
+		  (data->init_a_x - 1);
 	/*printf("data->tang = %f\n", data->tang);*/
 	if (flag == 1)
 		a_y = data->pos_y - (a_x - data->pos_x) * data->tang;
