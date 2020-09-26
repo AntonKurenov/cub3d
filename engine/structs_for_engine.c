@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 14:08:53 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/25 16:37:47 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/26 15:08:22 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ void	next_step_init(t_data *data)
 {
 	int i;
 
-	i = 0;
+	i = -1;
 	data->map_size_y = data->map_h * B_SIZE;
 	data->map_size_x = data->map_w * B_SIZE;
 	get_colour(data);
 	data->half_res = data->res_h >> 1;
-	while (i < 4)
+	while (++i < 4)
 	{
-		data->textr[i] = (t_tex *)malloc(sizeof(t_tex));
+		if ((data->textr[i] = (t_tex *)malloc(sizeof(t_tex))) == NULL)
+			file_exit(2);
 		if (i == 0)
 			data->textr[i]->name = data->set->no_texture;
 		else if (i == 1)
@@ -44,16 +45,15 @@ void	next_step_init(t_data *data)
 			data->textr[i]->name = data->set->we_texture;
 		else if (i == 3)
 			data->textr[i]->name = data->set->ea_texture;
-		printf("i = %d\n", i);
 		data->textr[i]->t_addr = NULL;
 		data->textr[i]->t_img = NULL;
-		i++;
 	}
 }
 
 t_data	init_img(t_data new, t_player *player, t_map *map_specs, t_set *set)
 {
 	set_angle(&new, player);
+	new.num_spr = map_specs->spr_num;
 	new.mlx = NULL;
 	new.addr = NULL;
 	new.mlx_win = NULL;
@@ -61,7 +61,8 @@ t_data	init_img(t_data new, t_player *player, t_map *map_specs, t_set *set)
 	new.res_w = set->res_w;
 	new.map_h = map_specs->height - 1;
 	new.map_w = map_specs->width - 1;
-	new.plane_dist = B_SIZE * (((double)(new.res_w >> 1)) / tan((double)H_FOV * RAD_CONV));
+	new.plane_dist = B_SIZE * (((double)(new.res_w >> 1)) / \
+			tan((double)H_FOV * RAD_CONV));
 	/*printf("plane_len = %f\n", new.plane_dist);*/
 	/*printf("tan = %f\n", tan(H_FOV * RAD_CONV));*/
 	new.i = 0;

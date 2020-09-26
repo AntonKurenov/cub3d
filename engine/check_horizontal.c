@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 15:05:58 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/25 10:34:06 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/26 18:54:12 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int check_map_for_inter(t_data *data, double x, double y)
 		return (-1);
 	if (data->map[new_y][new_x] == 49)
 		return (1);
+	if (data->map[new_y][new_x] == '2')
+		check_sprites(data, new_y, new_x);
 	if (new_x == 0 || new_y == 0)
 		return (1);
 	return (0);

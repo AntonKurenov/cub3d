@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/25 17:40:40 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/26 20:29:03 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_map
 {
 	int width;
 	int height;
+	int spr_num;
 }		t_map;
 
 typedef struct s_set
@@ -85,13 +86,30 @@ typedef struct s_tex
 	int		sq_hor;
 }			t_tex;
 
+typedef struct s_spr
+{
+	char	*name;
+	int		pos;
+	int		x;
+	int		new_x;
+	int		y;
+	int		new_y;
+	int		flag;
+	double	strt_angle;
+	double	mid_angle;
+	double	fin_angle;
+}			t_spr;	
+
 typedef struct	s_data 
 {
 	t_set	*set;
 	t_player *player;
 	t_tex		*textr[4];
-	double		pos_x;
-	double		pos_y;
+	t_spr		*spr;
+	int		num_spr;	
+	char	*spr_name;
+	double	pos_x;
+	double	pos_y;
 	int		angle;
 	int		i;
 	int		map_h;
@@ -185,5 +203,9 @@ void	which_texture(t_data *data, double len, int flag);
 int check_map_for_inter(t_data *data, double x, double y);
 void	get_colour(t_data *data);
 void	draw_ceil_and_floor(t_data *data, double wall_len);
+void	init_sprites(t_data *data, char **map);
+void	fill_spr(t_data *data, char **map);
+void	init_sprites(t_data *data, char **map);
+void	check_sprites(t_data *data, int x, int y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 18:44:59 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/25 17:25:24 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/26 15:05:23 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,13 @@ int next_level_map_check(char **map, int len, t_map map_sp, t_player *player)
 {
 	int i;
 	int j;
-	/*s_player player;*/
 
-	/*player = init_player(player);*/
 	len -= 1;
-	i = 1;
-	while (i < len)
+	i = -1;
+	while (++i < len)
 	{
-		j = 0;
-		while (map[i][j])
+		j = -1;
+		while (map[i][++j])
 		{
 			if (map[i][j] == '1')
 				j++;
@@ -61,9 +59,9 @@ int next_level_map_check(char **map, int len, t_map map_sp, t_player *player)
 				check_map_elem(map, j, i, player);
 			if (map[i][j] == '0' || map[i][j] == '2')
 				check_map_elem(map, j, i, player);
-			j++;
+			if (map[i][j] == '2')
+				map_sp.spr_num++;
 		}
-		i++;
 	}
 	printf("really end!!!!!\n");
 	return (0);

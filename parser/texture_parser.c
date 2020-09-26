@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 15:01:41 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/23 16:47:28 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/26 14:40:18 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int check_file_name(char **name, t_set *set, int type)
 		set->s_texture = *name;
 	printf("so_texture = %s\n", set->so_texture);
 	printf("no_texture = %s\n", set->no_texture);
+	printf("spr_texture = %s\n", set->s_texture);
 	return (0);
 }
 
