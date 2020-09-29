@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 17:26:11 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/25 17:45:34 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/29 15:39:06 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,13 @@ void receiver(t_data *data)
 	double init_angle;
 	double start_angle;
 
-	i = 0;
+	i = -1;
 	printf("data->angle = %d\n", data->angle);
 	start_angle = (double)((data->angle + H_FOV));
+	data->start_ang = start_angle;
 	data->init_a_x = (floor(data->pos_x / B_SIZE)) * B_SIZE;
 	data->init_a_y = (floor(data->pos_y / B_SIZE)) * B_SIZE;
-	while (i < data->res_w)
+	while (++i < data->res_w)
 	{
 		data->i = i;
 		data->step_ang = ((double)i) * data->part_angle;
@@ -96,6 +97,6 @@ void receiver(t_data *data)
 			data->tang = tan(angle * RAD_CONV);
 			len_compare(angle, data, i, 4);	
 		}
-		i++;
 	}
+	sprt_work(data);
 }

@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 15:23:00 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/25 17:32:26 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/28 14:53:09 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ double	get_percent(t_data *data, double len)
 	x = (data->is_vert == 1) ? data->vert_x : data->hor_x;
 	y = (data->is_vert == 1) ? data->vert_y : data->hor_y;
 	if (data->is_vert == 0)
-		percent = (x - (floor(x / 64) * 64)) / B_SIZE;
+		percent = (x - (floor(x / B_SIZE) * B_SIZE)) / B_SIZE;
 	if (data->is_vert == 1)
-		percent = (y - (floor(y / 64) * 64)) / B_SIZE;
+		percent = (y - (floor(y / B_SIZE) * B_SIZE)) / B_SIZE;
 	return (percent);
 }
 
