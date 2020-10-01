@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/29 18:29:56 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/01 18:17:43 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <math.h>
 
 # define RAD_CONV 0.0174533
+# define INV_RAD 57.2958
 # define FOV 60
 # define H_FOV 30
 # define BUTTON_W 13
@@ -91,19 +92,23 @@ typedef struct s_spr
 	//char	*name;
 	int		pos;
 	int		x;
-	int		new_x;
+	double	new_x;
 	int		y;
-	int		new_y;
+	double	new_y;
 	int		flag;
 	int		start_i;
 	int		end_i;
+	double	diff_ang_start;
+	double	diff_ang_end;
+	double	diff_start;
+	double	diff_end;
 	double	dist;
 	double	height;
 	double	half_height;
 	double	angle;
 	double	strt_angle;
 	double	mid_angle;
-	double	fin_angle;
+	double	end_angle;
 	double	init_angle;
 }			t_spr;	
 
@@ -128,6 +133,8 @@ typedef struct	s_data
 	int		map_h;
 	int		map_w;
 	double	cur_angle;
+	double	start_ang;
+	double	end_ang;
 	char	**map;
 	void	*img;
 	int		*addr;
@@ -166,7 +173,8 @@ typedef struct	s_data
 	int		vert_flag;
 	int		floor;
 	int		ceil;
-	double	start_ang;
+	int		new_x;
+	int		new_y;
 }			t_data;
 
 typedef struct s_angle
@@ -187,7 +195,7 @@ int colour_parser(char *line, t_set *set, int type);
 void init_map_parser(char *line, t_set *set, int flag);
 int arr_len(char **str_arr);
 int file_exit(int flag);
-int next_level_map_check(char **map, int len, t_map map_sp, t_player *player);
+int next_level_map_check(char **map, int len, t_map *map_sp, t_player *player);
 char **map_preparation(char **map, int arr_len, t_map *map_specs);
 t_player init_player(t_player new);
 t_col init_colours();
@@ -223,5 +231,9 @@ void	init_sprites(t_data *data, char **map);
 void	check_sprites(t_data *data, int x, int y);
 void	sprt_work(t_data *data);
 void	check_sprites(t_data *data, int x, int y);
+void check_map_for_sprt(t_data *data, int x, int y);
+int get_flag(double pl_x, double pl_y, double spr_x, double spr_y);
+int get_diff(double num1, int num2);
+void	get_sprt_angle(t_data *data, t_spr *spr, double angle, double len);
 
 #endif

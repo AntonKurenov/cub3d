@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 16:02:14 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/29 18:46:48 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/30 16:28:13 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void init_engine(t_player *player, t_set *set, t_map *map_specs, char **map)
 	int h, w;
 	void *t_addr;
 
+	printf("spr_num in map_specs = %d\n", map_specs->spr_num);
 	img.map = map;
 	img = init_img(img, player, map_specs, set);
 	img.mlx = mlx_init();

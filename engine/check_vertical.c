@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 15:10:50 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/28 12:03:54 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/30 18:46:54 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void vert_check(t_data *data)
 			break ;
 		if (ret == -1)
 			break ;
+		check_map_for_sprt(data, data->new_x, data->new_y);
 		data->vert_x = ((data->vert_x + data->v_a_x) > 0) ?\
 					   (data->vert_x += data->v_a_x) : 0;
 		data->vert_y = ((data->vert_y + data->v_a_y) > 0) ?\

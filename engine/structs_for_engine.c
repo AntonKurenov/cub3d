@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 14:08:53 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/28 15:50:56 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/09/30 16:23:09 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ t_data	init_img(t_data new, t_player *player, t_map *map_specs, t_set *set)
 {
 	set_angle(&new, player);
 	new.num_spr = map_specs->spr_num;
+	new.spr_name = set->s_texture;
+	printf("new->num_spr = %d\n", new.num_spr);
 	new.mlx = NULL;
 	new.addr = NULL;
 	new.mlx_win = NULL;

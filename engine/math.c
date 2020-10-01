@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 17:26:11 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/29 15:39:06 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/01 12:23:43 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,42 +59,37 @@ void receiver(t_data *data)
 	int i;
 	double angle;
 	double init_angle;
-	double start_angle;
 
 	i = -1;
 	printf("data->angle = %d\n", data->angle);
-	start_angle = (double)((data->angle + H_FOV));
-	data->start_ang = start_angle;
+	data->start_ang = (double)((data->angle + H_FOV));
+	data->end_ang = (double)((data->angle - H_FOV));
 	data->init_a_x = (floor(data->pos_x / B_SIZE)) * B_SIZE;
 	data->init_a_y = (floor(data->pos_y / B_SIZE)) * B_SIZE;
 	while (++i < data->res_w)
 	{
 		data->i = i;
 		data->step_ang = ((double)i) * data->part_angle;
-		init_angle = get_init_angle(data, start_angle);
+		init_angle = get_init_angle(data, data->start_ang);
 		data->cur_angle = init_angle;
 		if (init_angle >= 0 && init_angle < 90)
 		{
-			angle = init_angle;
-			data->tang = tan(angle * RAD_CONV);
+			data->tang = tan(init_angle * RAD_CONV);
 			len_compare(angle, data, i, 1);	
 		}
 		if (init_angle >= 90 && init_angle < 180)
 		{
-			angle = 180 - init_angle;
-			data->tang = tan(angle * RAD_CONV);
+			data->tang = tan((180 - init_angle) * RAD_CONV);
 			len_compare(angle, data, i, 2);	
 		}
 		if (init_angle >= 180 && init_angle < 270)
 		{
-			angle = init_angle - 180;
-			data->tang = tan(angle * RAD_CONV);
+			data->tang = tan((init_angle - 180) * RAD_CONV);
 			len_compare(angle, data, i, 3);	
 		}
 		if (init_angle >= 270 && init_angle < 360)
 		{
-			angle = 360 - init_angle;
-			data->tang = tan(angle * RAD_CONV);
+			data->tang = tan((360 - init_angle) * RAD_CONV);
 			len_compare(angle, data, i, 4);	
 		}
 	}
