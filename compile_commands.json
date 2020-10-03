@@ -42,6 +42,30 @@
    "-g", 
    "-c", 
    "-o", 
+   "engine/draw_ceil_and_floor.o", 
+   "engine/draw_ceil_and_floor.c"
+  ], 
+  "file": "engine/draw_ceil_and_floor.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/aux_sprt_funct.o", 
+   "engine/aux_sprt_funct.c"
+  ], 
+  "file": "engine/aux_sprt_funct.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
    "libft/ft_strlcpy.o", 
    "libft/ft_strlcpy.c"
   ], 
@@ -90,10 +114,34 @@
    "-g", 
    "-c", 
    "-o", 
+   "engine/textr_work.o", 
+   "engine/textr_work.c"
+  ], 
+  "file": "engine/textr_work.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
    "parser/get_next_line.o", 
    "parser/get_next_line.c"
   ], 
   "file": "parser/get_next_line.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/init_texture.o", 
+   "engine/init_texture.c"
+  ], 
+  "file": "engine/init_texture.c"
  }, 
  {
   "directory": "/Users/elovegoo/projects/cub3d_git", 
@@ -162,10 +210,10 @@
    "-g", 
    "-c", 
    "-o", 
-   "libft/ft_putchar.o", 
-   "libft/ft_putchar.c"
+   "engine/init_engine.o", 
+   "engine/init_engine.c"
   ], 
-  "file": "libft/ft_putchar.c"
+  "file": "engine/init_engine.c"
  }, 
  {
   "directory": "/Users/elovegoo/projects/cub3d_git", 
@@ -178,6 +226,18 @@
    "engine/math.c"
   ], 
   "file": "engine/math.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/get_colour.o", 
+   "engine/get_colour.c"
+  ], 
+  "file": "engine/get_colour.c"
  }, 
  {
   "directory": "/Users/elovegoo/projects/cub3d_git", 
@@ -210,10 +270,10 @@
    "-g", 
    "-c", 
    "-o", 
-   "engine/init_engine.o", 
-   "engine/init_engine.c"
+   "libft/ft_putchar.o", 
+   "libft/ft_putchar.c"
   ], 
-  "file": "engine/init_engine.c"
+  "file": "libft/ft_putchar.c"
  }, 
  {
   "directory": "/Users/elovegoo/projects/cub3d_git", 
@@ -250,6 +310,18 @@
    "engine/structs_for_engine.c"
   ], 
   "file": "engine/structs_for_engine.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/init_sprites.o", 
+   "engine/init_sprites.c"
+  ], 
+  "file": "engine/init_sprites.c"
  }, 
  {
   "directory": "/Users/elovegoo/projects/cub3d_git", 
@@ -346,6 +418,30 @@
    "engine/check_vertical.c"
   ], 
   "file": "engine/check_vertical.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/check_map.o", 
+   "engine/check_map.c"
+  ], 
+  "file": "engine/check_map.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/sprt_work.o", 
+   "engine/sprt_work.c"
+  ], 
+  "file": "engine/sprt_work.c"
  }, 
  {
   "directory": "/Users/elovegoo/projects/cub3d_git", 

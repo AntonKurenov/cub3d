@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/19 15:52:37 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/30 10:40:10 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/02 12:30:47 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	open_textr(t_data *data)
 	i = -1;
 	printf("sprt_name = %s\n", data->spr_name);
 	if ((data->spr_img = mlx_xpm_file_to_image(data->mlx, data->spr_name, \
-		&data->spr_h, &data->spr_h)) == NULL)
+		&data->spr_w, &data->spr_h)) == NULL)
 	{
 		ft_putstr("Error\nWrong sprite file\n");
 		exit (0);

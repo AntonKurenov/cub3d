@@ -6,11 +6,29 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 14:52:33 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/01 18:31:24 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/03 14:19:00 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void reset_sprite(t_data *data, t_spr *spr)
+{
+	data->spr_in_view = 0;
+	spr->diff_ang_end = 0;
+	spr->diff_ang_start = 0;
+	spr->flag = 0;
+	spr->angle = 0;
+	spr->dist = -1;
+	spr->init_angle = -1;
+	spr->diff_end = 0;
+	spr->diff_start = 0;
+	spr->start_i = 0;
+	spr->end_i = 0;
+	spr->height = 0;
+	spr->strt_angle = 0;
+	spr->end_angle = 0;
+}
 
 int get_diff(double num1, int num2)
 {
@@ -45,7 +63,7 @@ void get_strt_and_end_angle(t_data *data, t_spr *spr, double start, double end)
 	printf("diff_ang_start = %f  diff_ang_end = %f\n", spr->diff_ang_start, \
 			spr->diff_ang_end);
 	spr->start_i = spr->diff_ang_start / data->part_angle;
-	spr->end_i = spr->diff_ang_end / data->part_angle;
+	spr->end_i = data->res_w - spr->diff_ang_end / data->part_angle;
 	printf("spr_start i = %d\n end i = %d\n", spr->start_i, spr->end_i);
 	if (spr->diff_ang_start < 0)
 	{
@@ -55,7 +73,7 @@ void get_strt_and_end_angle(t_data *data, t_spr *spr, double start, double end)
 	if (spr->diff_ang_end < 0)
 	{
 		spr->diff_end = -spr->diff_ang_end;
-		spr->end_i = 0;
+		spr->end_i = data->res_w;
 	}
 	printf("spr_start i = %d\n end i = %d\n", spr->start_i, spr->end_i);
 }

@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/01 18:17:43 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/03 12:10:01 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,12 @@ typedef struct	s_data
 	t_set	*set;
 	t_player *player;
 	t_tex		*textr[4];
-	t_spr		*spr;
-	void		*spr_img;
+	t_spr	**spr;
+	void	*spr_img;
 	int		spr_h;
 	int		spr_w;
+	int		spr_in_view;		
+	int 	matr_size;
 	int		*spr_addr;
 	int		spr_bpp;
 	int		spr_line;
@@ -132,6 +134,8 @@ typedef struct	s_data
 	int		i;
 	int		map_h;
 	int		map_w;
+	int		act_map_h;
+	int		act_map_w;
 	double	cur_angle;
 	double	start_ang;
 	double	end_ang;
@@ -187,37 +191,37 @@ typedef struct s_angle
 	int		key;
 }			t_angle;
 
-int texture_parser(char *line, t_set *set, int type);
-int error_manager(int num);
-int check_name(char *name);
-int	atoi_str(char **str);
-int colour_parser(char *line, t_set *set, int type);
-void init_map_parser(char *line, t_set *set, int flag);
-int arr_len(char **str_arr);
-int file_exit(int flag);
-int next_level_map_check(char **map, int len, t_map *map_sp, t_player *player);
-char **map_preparation(char **map, int arr_len, t_map *map_specs);
+int 	texture_parser(char *line, t_set *set, int type);
+int 	error_manager(int num);
+int 	check_name(char *name);
+int		atoi_str(char **str);
+int 	colour_parser(char *line, t_set *set, int type);
+void 	init_map_parser(char *line, t_set *set, int flag);
+int 	arr_len(char **str_arr);
+int 	file_exit(int flag);
+int 	next_level_map_check(char **map, int len, t_map *map_sp, t_player *player);
+char 	**map_preparation(char **map, int arr_len, t_map *map_specs);
 t_player init_player(t_player new);
-t_col init_colours();
+t_col 	init_colours();
 t_set	init_set(t_set set);
-t_map init_map_specs(t_map map);
-void init_engine(t_player *player, t_set *set, t_map *map_specs, char **map);
+t_map 	init_map_specs(t_map map);
+void 	init_engine(t_player *player, t_set *set, t_map *map_specs, char **map);
 t_data	init_img(t_data new, t_player *player, t_map *map_specs, t_set *set);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_walls(t_data *data, double len);
-void receiver(t_data *data);
-int convert_coordinates(t_data *data, int flag);
-void reset_data(t_data *data);
-void get_horiz_inter(t_data *data, int flag);
-void get_vert_inter(t_data *data, int flag);
-int check_map(t_data *data, double x, double y);
-void close_win(t_data *data);
-void turn_left(t_data *data);
-void turn_right(t_data *data);
-void move_s_and_w(t_data *data, t_angle *ang);
+void 	receiver(t_data *data);
+int 	convert_coordinates(t_data *data, int flag);
+void 	reset_data(t_data *data);
+void 	get_horiz_inter(t_data *data, int flag);
+void 	get_vert_inter(t_data *data, int flag);
+int 	check_map(t_data *data, double x, double y);
+void 	close_win(t_data *data);
+void 	turn_left(t_data *data);
+void 	turn_right(t_data *data);
+void 	move_s_and_w(t_data *data, t_angle *ang);
 t_angle reset_angle(t_angle ang, t_data *data, int key);
-void convert_angle(t_angle *ang);
-void move_d_and_a(t_data *data, t_angle *ang);
+void 	convert_angle(t_angle *ang);
+void 	move_d_and_a(t_data *data, t_angle *ang);
 void	open_textr(t_data *data);
 double	get_percent(t_data *data, double len);
 void	get_textr_addr(t_data *data, int wall_len, int i);
@@ -228,12 +232,12 @@ void	draw_ceil_and_floor(t_data *data, double wall_len);
 void	init_sprites(t_data *data, char **map);
 void	fill_spr(t_data *data, char **map);
 void	init_sprites(t_data *data, char **map);
-void	check_sprites(t_data *data, int x, int y);
 void	sprt_work(t_data *data);
-void	check_sprites(t_data *data, int x, int y);
-void check_map_for_sprt(t_data *data, int x, int y);
-int get_flag(double pl_x, double pl_y, double spr_x, double spr_y);
-int get_diff(double num1, int num2);
+void	check_sprites(t_data *data, t_spr *spr);
+//void 	check_map_for_sprt(t_data *data, int x, int y);
+int 	get_flag(double pl_x, double pl_y, double spr_x, double spr_y);
+int 	get_diff(double num1, int num2);
 void	get_sprt_angle(t_data *data, t_spr *spr, double angle, double len);
+void reset_sprite(t_data *data, t_spr *spr);
 
 #endif

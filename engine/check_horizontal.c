@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 15:05:58 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/30 18:46:39 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/03 11:26:38 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void horiz_check(t_data *data)
 			break ;
 		if (ret == -1)
 			break ;
-		check_map_for_sprt(data, data->new_x, data->new_y);
+		/*check_map_for_sprt(data, data->new_x, data->new_y);*/
 		data->hor_x = ((data->hor_x + data->h_a_x) > 0) ?\
 					  (data->hor_x += data->h_a_x) : 0;
 		data->hor_y = ((data->hor_y + data->h_a_y) > 0) ?\
