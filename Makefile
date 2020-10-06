@@ -45,19 +45,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	gcc -g -o $@ $^ ./minilibx/libmlx.a -framework OpenGL -framework Appkit -lm
 
-#$(NAME): $(OBJS)
-	#gcc -g -o $@ $^ -framework OpenGL -framework Appkit libmlx.dylib 
-
-#all: $(NAME)
-
-#$(NAME): $(OBJS)
-	#@ar rc $(NAME) $(OBJS)
-	#@ranlib $(NAME)
-	#@echo "libftprintf.a has been created"
-
 clean:
 	rm -f $(OBJS)
-	#@echo "all .o files has been deleted"
 
 fclean: clean
 	rm -f $(NAME)
@@ -67,11 +56,4 @@ re: fclean all
 %.o: %.c
 	gcc -g -c $(COMP_FLAGS) -o $@ $< 
 
-
-
 .PHONY: all clean fclean re
-
-#NAME = main.c
-
-#all:
-	#gcc -I ./mlx/. $(NAME) -L ./mlx/. -lmlx -framework OpenGL -framework AppKit

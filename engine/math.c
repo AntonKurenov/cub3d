@@ -6,11 +6,23 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 17:26:11 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/03 12:51:53 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/06 14:39:45 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void get_pl_strt_and_end_angle(t_data *data)
+{
+	data->start_ang = (double)((data->angle + H_FOV));
+	data->end_ang = (double)((data->angle - H_FOV));
+	if (data->end_ang > 360)
+		data->end_ang = data->end_ang - 360;
+	if (data->end_ang < 0)
+		data->end_ang = 360 + data->end_ang;
+	if (data->start_ang > 360)
+		data->start_ang = data->start_ang - 360;
+}
 
 void len_compare(double angle, t_data *data, int i, int flag)
 {
@@ -26,12 +38,14 @@ void len_compare(double angle, t_data *data, int i, int flag)
 	{
 		data->is_vert = 1;
 		len = data->vert_len * cos(corr_angle * RAD_CONV);
+		data->dist_arr[data->i] = len;
 		which_texture(data, len, flag);
 	}
 	else
 	{
 		data->is_vert = 0;
 		len = data->hor_len * cos(corr_angle * RAD_CONV);
+		data->dist_arr[data->i] = len;
 		which_texture(data, len, flag);
 	}
 }
@@ -62,8 +76,7 @@ void receiver(t_data *data)
 
 	i = -1;
 	printf("data->angle = %d\n", data->angle);
-	data->start_ang = (double)((data->angle + H_FOV));
-	data->end_ang = (double)((data->angle - H_FOV));
+	get_pl_strt_and_end_angle(data);
 	data->init_a_x = (floor(data->pos_x / B_SIZE)) * B_SIZE;
 	data->init_a_y = (floor(data->pos_y / B_SIZE)) * B_SIZE;
 	while (++i < data->res_w)

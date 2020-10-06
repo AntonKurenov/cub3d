@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 12:11:05 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/03 12:18:03 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/06 21:27:06 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	check_sprites(t_data *data, t_spr *spr)
 		spr->half_height = spr->height * 0.5;
 		printf("spr_angle = %f\n", spr->angle);
 		printf("spr_height = %f\n", spr->height);
-		get_sprt_angle(data, spr, spr->angle, spr->height);
+		get_sprt_angle(data, spr, spr->angle, spr->half_height);
 	}
 }
 
@@ -51,9 +51,9 @@ void	init_sprites(t_data *data, char **map)
 				file_exit(2);
 		while (map[j][++i])
 		{
+			reset_sprite(data, &data->spr[j][i]);
 			if (map[j][i] == '2')
 			{
-				reset_sprite(data, &data->spr[j][i]);
 				data->spr[j][i].new_y = j * B_SIZE + 32;
 				data->spr[j][i].y = j;
 				data->spr[j][i].new_x = i * B_SIZE + 32;

@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/03 12:10:01 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/05 11:29:57 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ typedef struct	s_data
 	t_set	*set;
 	t_player *player;
 	t_tex		*textr[4];
+	double	*dist_arr;
 	t_spr	**spr;
 	void	*spr_img;
 	int		spr_h;

@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 14:08:53 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/03 12:50:31 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/06 11:35:12 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	next_step_init(t_data *data)
 	int i;
 
 	i = -1;
+	if (!(data->dist_arr = (double *)malloc(sizeof(double) * data->res_w)))
+		file_exit (2);
 	data->map_size_y = data->map_h * B_SIZE;
 	data->map_size_x = data->map_w * B_SIZE;
 	get_colour(data);
@@ -68,14 +70,14 @@ t_data	init_img(t_data new, t_player *player, t_map *map_specs, t_set *set)
 	new.map_w = map_specs->width - 1;
 	new.plane_dist = B_SIZE * (((double)(new.res_w >> 1)) / \
 			tan((double)H_FOV * RAD_CONV));
-	/*printf("plane_len = %f\n", new.plane_dist);*/
+	printf("plane_len = %f\n", new.plane_dist);
 	/*printf("tan = %f\n", tan(H_FOV * RAD_CONV));*/
 	new.spr = NULL;
 	new.i = 0;
 	new.pos_x = (player->x) * B_SIZE + 32;
 	new.pos_y = (player->y) * B_SIZE + 32;
 	/*printf("player pos_x = %d  pos_y = %d\n", player->x, player->y);*/
-	/*printf("pos_x = %f || pos_y = %f\n", new.pos_x, new.pos_y);*/
+	printf("pos_x = %f || pos_y = %f\n", new.pos_x, new.pos_y);
 	new.cur_angle = 0;
 	new.part_angle = (double)(FOV) / (double)(new.res_w);
 	new.set = set;
