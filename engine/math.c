@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 17:26:11 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/06 14:39:45 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/07 11:09:11 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void get_pl_strt_and_end_angle(t_data *data)
 		data->end_ang = 360 + data->end_ang;
 	if (data->start_ang > 360)
 		data->start_ang = data->start_ang - 360;
+	data->flag_start = get_ang_flag(data->start_ang);
+	data->flag_end = get_ang_flag(data->end_ang);
 }
 
 void len_compare(double angle, t_data *data, int i, int flag)

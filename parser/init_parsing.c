@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:13:24 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/07 10:19:53 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/08 15:18:53 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ int	parse_resolution(char *str1, char *str2, t_set *set, int len)
 		ft_putstr("Error\nInvalid map\n");
 		exit (0);
 	}
-	set->res_w = atoi_str(&str1);
-	set->res_h = atoi_str(&str2);
+	if ((set->res_w = atoi_str_res(&str1) == -1))
+		file_exit(1);	
+	if ((set->res_h = atoi_str_res(&str2) == -1))
+		file_exit(1);
 	printf("res_h = %d\n", set->res_h);
 	printf("res_w = %d\n", set->res_w);
 	return (0);
@@ -141,9 +143,9 @@ int main(int args, char **argv)
 	i = 1;
 	flag = 0;
 	set = init_set(set);
-	if (args != 2)
+	if (args > 3)
 		return (error_manager(1));
-	else if (args == 2)
+	else if (args == 2 || args == 3)
 	{
 		open_file(argv[1], &set, flag);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 15:01:41 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/30 10:41:59 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/08 15:04:41 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,52 @@ static int check_file_name(char **name, t_set *set, int type)
 	return (0);
 }
 
+static void check_colors(t_set *set, int type)
+{
+	if (type == 1)
+	{
+		if (set->colour.f_red > 255 && set->colour.f_red < 0)
+			file_exit(1);
+		if (set->colour.f_green > 255 && set->colour.f_green < 0)
+			file_exit(1);
+		if (set->colour.f_blue > 255 && set->colour.f_blue < 0)
+			file_exit(1);
+	}
+	if (type == 2)
+	{
+		if (set->colour.ce_red > 255 && set->colour.ce_red < 0)
+			file_exit(1);
+		if (set->colour.ce_green > 255 && set->colour.ce_green < 0)
+			file_exit(1);
+		if (set->colour.ce_blue > 255 && set->colour.ce_blue < 0)
+			file_exit(1);
+	}
+}
+
 int colour_parser(char *line, t_set *set, int type)
 {
 	if (type == 1)
 	{
-		set->colour.f_red = atoi_str(&line);
+		set->colour.f_red = atoi_str_color(&line);
 		line++;
-		set->colour.f_green = atoi_str(&line);
+		set->colour.f_green = atoi_str_color(&line);
 		line++;
-		set->colour.f_blue = atoi_str(&line);
+		set->colour.f_blue = atoi_str_color(&line);
+		if (*line != '\0')
+			file_exit(1);
 	}
 	if (type == 2)
 	{
-		set->colour.ce_red = atoi_str(&line);
+		set->colour.ce_red = atoi_str_color(&line);
 		line++;
-		set->colour.ce_green = atoi_str(&line);
+		set->colour.ce_green = atoi_str_color(&line);
 		line++;
-		set->colour.ce_blue = atoi_str(&line);
+		set->colour.ce_blue = atoi_str_color(&line);
+		if (*line != '\0')
+			file_exit(1);
 	}
 	printf("ce_blue = %d\n", set->colour.ce_blue);
+	check_colors(set, type);
 	return(0);
 }
 

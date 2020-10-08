@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 16:02:14 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/05 11:59:10 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/07 19:15:45 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	next_frame(int key, t_data *data)
 
 	receiver(data);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
+	/*mlx_destroy_image(data->mlx, data->img);*/
 	mlx_loop(data->mlx);
 	return (0);
 }
@@ -52,7 +53,7 @@ void init_engine(t_player *player, t_set *set, t_map *map_specs, char **map)
 	int h, w;
 	void *t_addr;
 
-	printf("spr_num in map_specs = %d\n", map_specs->spr_num);
+	/*printf("spr_num in map_specs = %d\n", map_specs->spr_num);*/
 	img.map = map;
 	img = init_img(img, player, map_specs, set);
 	img.mlx = mlx_init();
@@ -65,5 +66,6 @@ void init_engine(t_player *player, t_set *set, t_map *map_specs, char **map)
 	receiver(&img);
 	mlx_hook(img.mlx_win, 2, 1L<<2, next_frame, &img);
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
+	/*mlx_destroy_image(img.mlx, img.img);*/
 	mlx_loop(img.mlx);
 }

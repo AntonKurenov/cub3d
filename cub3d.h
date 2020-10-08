@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/05 11:29:57 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/08 14:07:47 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ typedef struct s_tex
 	int		end;
 	int		h;
 	int		w;
-	int		some_variable;
 	int		sq_vert;
 	int		sq_hor;
 }			t_tex;
@@ -109,7 +108,15 @@ typedef struct s_spr
 	double	strt_angle;
 	double	mid_angle;
 	double	end_angle;
-	double	init_angle;
+	int		st_flag;
+	int		end_flag;
+	double	step_x;
+	double	tmp_step_x;
+	double	tmp_step_y;
+	double	tmp_y;
+	double	step_y;
+	double 	old_y;
+	int		color;
 }			t_spr;	
 
 typedef struct	s_data 
@@ -139,7 +146,9 @@ typedef struct	s_data
 	int		act_map_w;
 	double	cur_angle;
 	double	start_ang;
+	int		flag_start;
 	double	end_ang;
+	int		flag_end;
 	char	**map;
 	void	*img;
 	int		*addr;
@@ -195,7 +204,8 @@ typedef struct s_angle
 int 	texture_parser(char *line, t_set *set, int type);
 int 	error_manager(int num);
 int 	check_name(char *name);
-int		atoi_str(char **str);
+int		atoi_str_color(char **str);
+int		atoi_str_res(char **str);
 int 	colour_parser(char *line, t_set *set, int type);
 void 	init_map_parser(char *line, t_set *set, int flag);
 int 	arr_len(char **str_arr);
@@ -239,6 +249,8 @@ void	check_sprites(t_data *data, t_spr *spr);
 int 	get_flag(double pl_x, double pl_y, double spr_x, double spr_y);
 int 	get_diff(double num1, int num2);
 void	get_sprt_angle(t_data *data, t_spr *spr, double angle, double len);
-void reset_sprite(t_data *data, t_spr *spr);
+void	reset_sprite(t_data *data, t_spr *spr);
+int	get_ang_flag(double angle);
+void	draw_sprt(t_data *data, t_spr spr, double height);
 
 #endif

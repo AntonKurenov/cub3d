@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 12:11:05 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/06 21:27:06 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/08 11:02:51 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@ void	check_sprites(t_data *data, t_spr *spr)
 	if (spr->dist == -1)
 	{
 		data->spr_in_view++;
-		printf("data->spr_in_view = %d\n", data->spr_in_view);
+		/*printf("data->spr_in_view = %d\n", data->spr_in_view);*/
 		spr->flag = get_flag(data->pos_x, data->pos_y, spr->new_x, spr->new_y);
-		printf("spr->flag = %d\n", spr->flag);
+		/*printf("spr->flag = %d\n", spr->flag);*/
 		diff_x = get_diff(data->pos_x, spr->new_x);
 		diff_y = get_diff(data->pos_y, spr->new_y);
-		spr->dist = sqrt(diff_x * diff_x + diff_y * diff_y);
+		spr->dist = sqrt(diff_x * diff_x + diff_y * diff_y) * 0.95;
 		spr->height = (data->plane_dist / spr->dist);
-		spr->angle = (atan((double)diff_y / (double)diff_x)) *\
-							 INV_RAD;
+		spr->angle = (atan((double)diff_y / (double)diff_x)) * INV_RAD;
 		spr->half_height = spr->height * 0.5;
-		printf("spr_angle = %f\n", spr->angle);
-		printf("spr_height = %f\n", spr->height);
+		/*printf("spr_angle = %f\n", spr->angle);*/
+		/*printf("spr_height = %f\n", spr->height);*/
 		get_sprt_angle(data, spr, spr->angle, spr->half_height);
 	}
 }
@@ -42,7 +41,7 @@ void	init_sprites(t_data *data, char **map)
 	int j;
 
 	j = -1;
-	printf("inside init_sprites\n");
+	/*printf("inside init_sprites\n");*/
 	if (!(data->spr = (t_spr**)(malloc(sizeof(t_spr*) * data->matr_size))))
 		file_exit(2);
 	while (map[++j] && (i = -1))
@@ -58,8 +57,8 @@ void	init_sprites(t_data *data, char **map)
 				data->spr[j][i].y = j;
 				data->spr[j][i].new_x = i * B_SIZE + 32;
 				data->spr[j][i].x = i;
-				printf("spr[%d][%d] >> x = %d  y = %d\n", j, i, data->spr[j][i].x, \
-						data->spr[j][i].y);
+				/*printf("spr[%d][%d] >> x = %d  y = %d\n", j, i, data->spr[j][i].x, \*/
+						/*data->spr[j][i].y);*/
 			}
 		}
 	}
