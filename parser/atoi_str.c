@@ -6,60 +6,61 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 15:00:42 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/08 15:13:09 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/10 20:33:53 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "../cub3d.h"
 
-int	atoi_str_res(char **str)
+int		atoi_str_res(char **str)
 {
-	unsigned int ret;
-	int m;
+	unsigned int	ret;
 
 	ret = 0;
-	m = 1;
 	while (**str == ' ')
 		(*str)++;
 	if (**str == '-' || **str == '+' || (**str < '0' && **str > '9'))
-	{
-		m = -1;
-		return (-1);
-	}
-	if (**str == '-' || **str == '+')
-		(*str)++;
+		file_exit(4);
 	while (**str >= '0' && **str <= '9' && **str)
 	{
 		ret = ret * 10 + (**str - '0');
-		if (ret >= 10000)
-			return (0);
+		if (ret >= 1000000)
+		{
+			while (**str >= '0' && **str <= '9')
+				(*str)++;
+			if (**str != ' ' && **str != '\0')
+				file_exit(4);
+			return (-2);
+		}
 		(*str)++;
 	}
-	return (ret * m);
+	return (ret);
 }
 
-int	atoi_str_color(char **str)
+int		atoi_str_color(char **str)
 {
-	unsigned int ret;
-	int m;
+	unsigned int	ret;
+	int				flag;
 
+	flag = 0;
 	ret = 0;
-	m = 1;
+	(*str)++;
 	while (**str == ' ')
 		(*str)++;
 	if (**str == '-' || **str == '+' || (**str < '0' && **str > '9'))
-	{
-		m = -1;
-		return (-1);
-	}
-	if (**str == '-' || **str == '+')
-		(*str)++;
+		file_exit(3);
 	while (**str >= '0' && **str <= '9' && **str)
 	{
+		if (**str == '0' && flag == 0)
+			flag = 1;
+		if (**str != '0' && flag == 1)
+			flag = 0;
 		ret = ret * 10 + (**str - '0');
 		if (ret >= 1000)
-			return (-1);
+			file_exit(3);
 		(*str)++;
+		if (**str == '0' && flag == 1)
+			file_exit(3);
 	}
-	return (ret * m);
+	return (ret);
 }

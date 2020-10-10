@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 14:08:53 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/07 18:30:23 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/10 13:06:25 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,35 +54,48 @@ void	next_step_init(t_data *data)
 	}
 }
 
-t_data	init_img(t_data new, t_player *player, t_map *map_specs, t_set *set)
+void get_resolution(t_data *data)
 {
-	set_angle(&new, player);
-	new.num_spr = map_specs->spr_num;
-	new.spr_name = set->s_texture;
-	/*printf("new->num_spr = %d\n", new.num_spr);*/
-	new.mlx = NULL;
-	new.addr = NULL;
-	new.mlx_win = NULL;
-	new.res_h = set->res_h;
-	new.res_w = set->res_w;
-	new.matr_size = map_specs->height * map_specs->width;
-	new.map_h = map_specs->height - 1;
-	new.map_w = map_specs->width - 1;
-	new.plane_dist = B_SIZE * (((double)(new.res_w >> 1)) / \
+	int res_h;
+	int res_w;
+
+	res_h = 0;
+	res_w = 0;
+	mlx_get_screen_size(data->mlx, &res_w, &res_h);
+	if (data->res_w > res_w || data->res_w == -2)
+		data->res_w = res_w;
+	if (data->res_h > res_h || data->res_h == -2)
+		data->res_h = res_h;
+	printf("res_h = %d res_w = %d\n", data->res_h, data->res_w);
+}
+
+void	init_img(t_data *new, t_player *player, t_map *map_specs, t_set *set)
+{
+	set_angle(new, player);
+	new->num_spr = map_specs->spr_num;
+	new->spr_name = set->s_texture;
+	printf("res_h = %d res_w = %d\n", set->res_h, set->res_w);
+	new->res_h = set->res_h;
+	new->res_w = set->res_w;
+	if ((new->mlx = mlx_init()) == NULL)
+		file_exit(7);
+	get_resolution(new);
+	new->matr_size = map_specs->height * map_specs->width;
+	new->map_h = map_specs->height - 1;
+	new->map_w = map_specs->width - 1;
+	new->plane_dist = B_SIZE * (((double)(new->res_w >> 1)) / \
 			tan((double)H_FOV * RAD_CONV));
-	/*printf("plane_len = %f\n", new.plane_dist);*/
-	/*printf("tan = %f\n", tan(H_FOV * RAD_CONV));*/
-	new.spr = NULL;
-	new.i = 0;
-	new.pos_x = (player->x) * B_SIZE + 32;
-	new.pos_y = (player->y) * B_SIZE + 32;
-	/*printf("player pos_x = %d  pos_y = %d\n", player->x, player->y);*/
-	/*printf("pos_x = %f || pos_y = %f\n", new.pos_x, new.pos_y);*/
-	new.cur_angle = 0;
-	new.part_angle = (double)(FOV) / (double)(new.res_w);
-	new.set = set;
-	new.player = player;
-	new.line_length = 0;
-	next_step_init(&new);
-	return (new);
+	/*p->intf("plane_len = %f\n", new.plane_dist);*/
+	new->spr = NULL;
+	new->i = 0;
+	new->pos_x = (player->x) * B_SIZE + 32;
+	new->pos_y = (player->y) * B_SIZE + 32;
+	printf("player pos_x = %d  pos_y = %d\n", player->x, player->y);
+	printf("pos_x = %f || pos_y = %f\n", new->pos_x, new->pos_y);
+	new->cur_angle = 0;
+	new->part_angle = (double)(FOV) / (double)(new->res_w);
+	new->set = set;
+	new->player = player;
+	new->line_length = 0;
+	next_step_init(new);
 }

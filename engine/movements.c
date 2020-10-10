@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 15:10:53 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/09/25 10:43:05 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/10 16:31:31 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 void check_position(t_data *data, double new_x, double new_y)
 {
-	int x_grid;
-	int y_grid;
+	double x;
+	double x_s;
+	double y_s;
+	double y;
 	int ret;
 
-	ret = check_map(data, data->pos_x + new_x, data->pos_y + new_y);
+	x = new_x * 3;
+	y = new_y * 3;
+	ret = check_map(data, data->pos_x + x, data->pos_y + y);
 	if (ret == 0)
 	{
 		data->pos_x += new_x;
@@ -76,7 +80,8 @@ void move_d_and_a(t_data *data, t_angle *ang)
 	{
 		new_x = (ang->init_angle > 180 && ang->init_angle <= 360) ?\
 				ang->new_x : -ang->new_x;
-		new_y = (ang->init_angle >= 90 && ang->init_angle <= 270) ? ang->new_y : -ang->new_y;
+		new_y = (ang->init_angle >= 90 && ang->init_angle <= 270) ? ang->new_y\
+				: -ang->new_y;
 		check_position(data, new_x, new_y);
 		return ;
 	}

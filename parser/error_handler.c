@@ -6,47 +6,63 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:29:07 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/22 11:15:00 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/10 20:31:51 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int error_manager(int num)
+int		error_manager(int num)
 {
 	if (num == 1)
 		ft_putstr("Error\nNo argument provided\n");
 	return (1);
 }
 
-int extension_comp(char *name, int len)
+int		extension_comp(char *name, int len)
 {
-	char *extension;
-	char *ptr;
-	int i;
+	char	*extension;
+	char	*ptr;
+	int		i;
 
 	i = 0;
 	ptr = (name + len - 4);
-	/*printf("ptr = %s\n", ptr);*/
 	extension = ".cub";
 	while (extension[i] == ptr[i] && ptr[i])
 		i++;
-	/*printf("i = %d\n", i);*/
 	if (i == 4)
 		return (1);
 	return (0);
 }
 
-int file_exit(int flag)
+int		file_exit(int flag)
 {
+	if (flag == 0)
+		ft_putstr("Error\nBad file descriptor\n");
 	if (flag == 1)
 		ft_putstr("Error\nInvalid map\n");
 	if (flag == 2)
 		ft_putstr("Error\nMemory allocation fail\n");
-	exit (0);
+	if (flag == 3)
+		ft_putstr("Error\nWrong color format\n");
+	if (flag == 4)
+		ft_putstr("Error\nInvalid resolution settings\n");
+	if (flag == 5)
+		ft_putstr("Error\nWrong third argument\n");
+	if (flag == 6)
+		ft_putstr("Error\nFailed to write screenshot\n");
+	if (flag == 7)
+		ft_putstr("Error\nMLX return NULL\n");
+	if (flag == 8)
+		ft_putstr("Screenshot saved to ./screenshot.bmp\n");
+	if (flag == 9)
+		ft_putstr("Error\nWrong number of arguments\n");
+	if (flag == 10)
+		ft_putstr("Error\nThe texture file doesn't open\n");
+	exit(0);
 }
 
-int check_name(char *name)
+int		check_name(char *name)
 {
 	int len;
 
@@ -58,6 +74,6 @@ int check_name(char *name)
 	if (extension_comp(name, len) == 1)
 		return (1);
 	else
-		ft_putstr("Error\nWrong file extension");
+		ft_putstr("Error\nWrong file extension\n");
 	return (0);
 }

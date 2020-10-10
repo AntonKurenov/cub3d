@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 17:26:36 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/25 17:27:25 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/10 17:29:01 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ static void line_filler(char **line, int len)
 
 	i = 0;
 	tmp = *line;
-	if (!(new_line = malloc(sizeof(char) * (len + 1))))
-		file_exit(1);
+	if (!(new_line = ft_calloc(sizeof(char), (len + 1))))
+		file_exit(2);
 	while (tmp[i])
 	{
 		new_line[i] = tmp[i];

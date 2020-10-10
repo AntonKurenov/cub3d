@@ -258,6 +258,18 @@
    "-g", 
    "-c", 
    "-o", 
+   "engine/draw_sprites.o", 
+   "engine/draw_sprites.c"
+  ], 
+  "file": "engine/draw_sprites.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
    "engine/check_horizontal.o", 
    "engine/check_horizontal.c"
   ], 
@@ -466,5 +478,29 @@
    "parser/get_next_line_utils.c"
   ], 
   "file": "parser/get_next_line_utils.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "engine/get_flags.o", 
+   "engine/get_flags.c"
+  ], 
+  "file": "engine/get_flags.c"
+ }, 
+ {
+  "directory": "/Users/elovegoo/projects/cub3d_git", 
+  "arguments": [
+   "gcc", 
+   "-g", 
+   "-c", 
+   "-o", 
+   "parser/setting_parser.o", 
+   "parser/setting_parser.c"
+  ], 
+  "file": "parser/setting_parser.c"
  }
 ]

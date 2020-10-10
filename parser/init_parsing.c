@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:13:24 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/08 15:18:53 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/10 19:22:08 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ int check_set(t_set set)
 		printf("flag2 = %d\n", flag);
 	}
 	if (flag == 2)
-	{
-		/*printf("Hey there! flag = 2!!!\n");*/
 		return (1);
-	}
 	return (0);
 }
 
@@ -51,74 +48,20 @@ int arr_len(char **str_arr)
 	return (i);
 }
 
-int	parse_resolution(char *str1, char *str2, t_set *set, int len)
-{
-	if (len != 3)
-	{
-		ft_putstr("Error\nInvalid map\n");
-		exit (0);
-	}
-	if ((set->res_w = atoi_str_res(&str1) == -1))
-		file_exit(1);	
-	if ((set->res_h = atoi_str_res(&str2) == -1))
-		file_exit(1);
-	printf("res_h = %d\n", set->res_h);
-	printf("res_w = %d\n", set->res_w);
-	return (0);
-}
-
-int	setting_parser(char *line, t_set *set)
-{
-	char **str_arr;
-	int len;
-	int ret;
-
-	str_arr = ft_split(line, ' ');
-	len = arr_len(str_arr);
-	ret = 1;
-	if (len == 0)
-		return (0);
-	else if ((ft_strncmp(str_arr[0], "R", 1) == 0) && set->res_h == 0 && \
-		len == 3)
-		ret = parse_resolution(str_arr[1], str_arr[2], set, len);
-	else if ((ft_strncmp(str_arr[0], "NO", 2) == 0) && set->no_texture == NULL && \
-		len == 2)
-		ret = texture_parser(str_arr[1], set, 1);
-	else if ((ft_strncmp(str_arr[0], "SO", 2) == 0) && set->so_texture == NULL && \
-		len == 2)
-		ret = texture_parser(str_arr[1], set, 2);
-	else if ((ft_strncmp(str_arr[0], "WE", 2) == 0) && set->we_texture == NULL && \
-		len == 2)
-		ret = texture_parser(str_arr[1], set, 3);
-	else if ((ft_strncmp(str_arr[0], "EA", 2) == 0) && set->ea_texture == NULL && \
-		len == 2)
-		ret = texture_parser(str_arr[1], set, 4);
-	else if ((ft_strncmp(str_arr[0], "S", 1) == 0) && set->s_texture == NULL && \
-		len == 2)
-		ret = texture_parser(str_arr[1], set, 5);
-	else if ((ft_strncmp(str_arr[0], "F", 1) == 0))
-		ret = colour_parser(str_arr[1], set, 1);
-	else if ((ft_strncmp(str_arr[0], "C", 1) == 0))
-		ret = colour_parser(str_arr[1], set, 2);
-	else
-		return (file_exit(1));
-	return (ret);
-}
-
 static int open_file(char *name, t_set *set, int flag)
 {
 	int fd;
 	char *line;
+	char *tmp;
 
 	if ((check_name(name)) == 0)
 		return (0);
 	if ((fd = open(name, O_RDONLY)) == -1)
-	{
-		ft_putstr("Error\nBad file descriptor");
-		return (0);
-	}
+		file_exit(0);
 	while (get_next_line(fd, &line))
 	{
+		tmp = line;
+		printf("line = %s\n", line);
 		if ((check_set(*set) != 1) && line[0] != '\0')
 			setting_parser(line, set);
 		else if ((check_set(*set) == 1) && line[0] == '\0' && flag != 0)
@@ -128,7 +71,7 @@ static int open_file(char *name, t_set *set, int flag)
 			flag++;
 			init_map_parser(line, set, 0);
 		}
-		free(line);
+		free(tmp);
 	}
 	init_map_parser(line, set, 1);
 	return (0);
@@ -138,17 +81,28 @@ int main(int args, char **argv)
 {
 	int i;
 	int flag;
+	char *save;
 	t_set set;
 
 	i = 1;
+	save = "--save";
 	flag = 0;
-	set = init_set(set);
-	if (args > 3)
+	init_set(&set);
+	if (args < 2)
 		return (error_manager(1));
 	else if (args == 2 || args == 3)
 	{
+		if (args == 3)
+		{
+			if (ft_strncmp(argv[2], "--save", 6) == 0)
+				set.is_save = 1;
+			else
+				file_exit(5);
+		}
 		open_file(argv[1], &set, flag);
 		i++;
 		return (0);
 	}
+	else
+		file_exit(9);
 }

@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 12:02:22 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/03 12:51:53 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/10 16:28:00 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,7 @@ int check_map(t_data *data, double x, double y)
 	new_y = (int)(floor(y / 64));
 	if (new_x > data->map_w || new_y > data->map_h || new_x < 0 || new_y < 0)
 		return (-1);
-	if (data->map[new_y][new_x] == 49)
-	{
+	if (data->map[new_y][new_x] == 49 || data->map[new_y][new_x] == '2')
 		return (1);
-	}
 	return (0);
 }

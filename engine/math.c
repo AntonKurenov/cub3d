@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 17:26:11 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/07 11:09:11 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/08 16:47:01 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ void get_pl_strt_and_end_angle(t_data *data)
 	data->flag_end = get_ang_flag(data->end_ang);
 }
 
-void len_compare(double angle, t_data *data, int i, int flag)
+void len_compare(t_data *data, int flag)
 {
-	int j;
 	double corr_angle;
 	double len;
 
@@ -70,14 +69,37 @@ double get_init_angle(t_data *data, double start_angle)
 	return (init_angle);
 }
 
+static void next_step(t_data *data, double init_angle)
+{
+	if (init_angle >= 0 && init_angle < 90)
+	{
+		data->tang = tan(init_angle * RAD_CONV);
+		len_compare(data, 1);	
+	}
+	if (init_angle >= 90 && init_angle < 180)
+	{
+		data->tang = tan((180 - init_angle) * RAD_CONV);
+		len_compare(data, 2);	
+	}
+	if (init_angle >= 180 && init_angle < 270)
+	{
+		data->tang = tan((init_angle - 180) * RAD_CONV);
+		len_compare(data, 3);	
+	}
+	if (init_angle >= 270 && init_angle < 360)
+	{
+		data->tang = tan((360 - init_angle) * RAD_CONV);
+		len_compare(data, 4);	
+	}
+}
+
 void receiver(t_data *data)
 {
 	int i;
-	double angle;
 	double init_angle;
 
 	i = -1;
-	printf("data->angle = %d\n", data->angle);
+	/*printf("data->angle = %d\n", data->angle);*/
 	get_pl_strt_and_end_angle(data);
 	data->init_a_x = (floor(data->pos_x / B_SIZE)) * B_SIZE;
 	data->init_a_y = (floor(data->pos_y / B_SIZE)) * B_SIZE;
@@ -87,26 +109,7 @@ void receiver(t_data *data)
 		data->step_ang = ((double)i) * data->part_angle;
 		init_angle = get_init_angle(data, data->start_ang);
 		data->cur_angle = init_angle;
-		if (init_angle >= 0 && init_angle < 90)
-		{
-			data->tang = tan(init_angle * RAD_CONV);
-			len_compare(angle, data, i, 1);	
-		}
-		if (init_angle >= 90 && init_angle < 180)
-		{
-			data->tang = tan((180 - init_angle) * RAD_CONV);
-			len_compare(angle, data, i, 2);	
-		}
-		if (init_angle >= 180 && init_angle < 270)
-		{
-			data->tang = tan((init_angle - 180) * RAD_CONV);
-			len_compare(angle, data, i, 3);	
-		}
-		if (init_angle >= 270 && init_angle < 360)
-		{
-			data->tang = tan((360 - init_angle) * RAD_CONV);
-			len_compare(angle, data, i, 4);	
-		}
+		next_step(data, init_angle);
 	}
 	sprt_work(data);
 }

@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 15:23:00 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/08 14:57:59 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/08 16:46:28 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ double	get_percent(t_data *data, double len)
 	double x;
 	double y;
 	int	part_len;
-	int	x_inter;
-	int y_inter;
 	double percent;
 
 	x = (data->is_vert == 1) ? data->vert_x : data->hor_x;
@@ -32,37 +30,30 @@ double	get_percent(t_data *data, double len)
 
 void	put_texture(int *t_addr, int t, t_data *data, double len)
 {
-	double wall_len;
-	int y;
-	double step_x;
-	double step_y;
-	double percent;
-	double tmp;
+	t_print tx;
 
-	wall_len = (data->plane_dist / len);
-	draw_ceil_and_floor(data, wall_len);
-	percent = get_percent(data, len);
-	step_x =  data->textr[t]->w * percent;
-	step_y = data->textr[t]->h / wall_len;
-	tmp = step_y;
-	/*printf("step_y = %f\nstep_x = %f\n", step_y, step_x);*/
-	y = -1;
-	if (wall_len >= data->res_h)
+	tx.wall_len = (data->plane_dist / len);
+	draw_ceil_and_floor(data, tx.wall_len);
+	tx.percent = get_percent(data, len);
+	tx.step_x =  data->textr[t]->w * tx.percent;
+	tx.step_y = data->textr[t]->h / tx.wall_len;
+	tx.tmp = tx.step_y;
+	tx.y = -1;
+	if (tx.wall_len >= data->res_h)
 	{
-		step_y = ((wall_len - data->res_h) / 2) * tmp;
-		y = -1;
-		wall_len = data->res_h;
+		tx.step_y = ((tx.wall_len - data->res_h) / 2) * tx.tmp;
+		tx.wall_len = data->res_h;
 	}
 	else
 	{
-		y = (data->res_h - wall_len) / 2;	
-		wall_len += y;
+		tx.y = (data->res_h - tx.wall_len) / 2;	
+		tx.wall_len += tx.y;
 	}
-	while (++y < wall_len)
+	while (++tx.y < tx.wall_len)
 	{
-		data->addr[(int)data->i + (int)(y * data->res_w)] = t_addr[(int)step_x \
-					+ (int)(step_y) * data->textr[t]->w];
-		step_y = step_y + tmp;
+		data->addr[(int)data->i + (int)(tx.y * data->res_w)] = \
+			t_addr[(int)tx.step_x + (int)(tx.step_y) * data->textr[t]->w];
+		tx.step_y = tx.step_y + tx.tmp;
 	}
 }
 

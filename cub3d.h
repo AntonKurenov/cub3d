@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/08 14:07:47 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/10 19:34:28 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_map
 typedef struct s_set
 {
 	t_col colour;
+	int is_save;
 	int res_w;
 	int res_h;
 	char *no_texture;
@@ -85,6 +86,16 @@ typedef struct s_tex
 	int		sq_vert;
 	int		sq_hor;
 }			t_tex;
+
+typedef struct s_print
+{
+	double percent;
+	double tmp;
+	double step_x;
+	double step_y;
+	double wall_len;
+	int		y;
+}			t_print;
 
 typedef struct s_spr
 {
@@ -201,23 +212,25 @@ typedef struct s_angle
 	int		key;
 }			t_angle;
 
-int 	texture_parser(char *line, t_set *set, int type);
+void	free_arr(char **arr);
+void	setting_parser(char *line, t_set *set);
+int		texture_parser(char *line, t_set *set, int type, int len);
 int 	error_manager(int num);
 int 	check_name(char *name);
 int		atoi_str_color(char **str);
 int		atoi_str_res(char **str);
-int 	colour_parser(char *line, t_set *set, int type);
 void 	init_map_parser(char *line, t_set *set, int flag);
 int 	arr_len(char **str_arr);
 int 	file_exit(int flag);
 int 	next_level_map_check(char **map, int len, t_map *map_sp, t_player *player);
 char 	**map_preparation(char **map, int arr_len, t_map *map_specs);
-t_player init_player(t_player new);
-t_col 	init_colours();
-t_set	init_set(t_set set);
-t_map 	init_map_specs(t_map map);
+void	init_player(t_player *new);
+void	init_colours(t_col *colour);
+int 	colour_parser(char **line, t_set *set, int type);
+void	init_set(t_set *set);
+void 	init_map_specs(t_map *map);
 void 	init_engine(t_player *player, t_set *set, t_map *map_specs, char **map);
-t_data	init_img(t_data new, t_player *player, t_map *map_specs, t_set *set);
+void	init_img(t_data *new, t_player *player, t_map *map_specs, t_set *set);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_walls(t_data *data, double len);
 void 	receiver(t_data *data);
@@ -245,12 +258,13 @@ void	fill_spr(t_data *data, char **map);
 void	init_sprites(t_data *data, char **map);
 void	sprt_work(t_data *data);
 void	check_sprites(t_data *data, t_spr *spr);
-//void 	check_map_for_sprt(t_data *data, int x, int y);
 int 	get_flag(double pl_x, double pl_y, double spr_x, double spr_y);
 int 	get_diff(double num1, int num2);
 void	get_sprt_angle(t_data *data, t_spr *spr, double angle, double len);
 void	reset_sprite(t_data *data, t_spr *spr);
 int	get_ang_flag(double angle);
 void	draw_sprt(t_data *data, t_spr spr, double height);
+void	get_resolution(t_data *data);
+void    get_screenshot(t_data *data);
 
 #endif
