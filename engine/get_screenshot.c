@@ -6,13 +6,13 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 10:49:31 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/10 11:22:38 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 14:47:11 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void    write_pixel(int num, unsigned char *arr)
+void	write_pixel(int num, unsigned char *arr)
 {
 	arr[0] = (unsigned char)(num & 255);
 	arr[1] = (unsigned char)((num >> 8) & 255);
@@ -20,7 +20,7 @@ void    write_pixel(int num, unsigned char *arr)
 	arr[3] = (unsigned char)((num >> 24) & 255);
 }
 
-void    write_header(t_data *data, unsigned char *bytes, int bmpsize)
+void	write_header(t_data *data, unsigned char *bytes, int bmpsize)
 {
 	int	pixels_per_meter;
 
@@ -39,7 +39,7 @@ void    write_header(t_data *data, unsigned char *bytes, int bmpsize)
 	write_pixel(pixels_per_meter, bytes + 42);
 }
 
-void    write_image(t_data *data, unsigned char *bytes, int bmpsize)
+void	write_image(t_data *data, unsigned char *bytes, int bmpsize)
 {
 	int	i;
 	int	x;
@@ -49,22 +49,22 @@ void    write_image(t_data *data, unsigned char *bytes, int bmpsize)
 	y = data->res_h;
 	while (y-- > 0)
 	{
-	    x = -1;
-	    while (++x < data->res_w && i < bmpsize)
-	    {
-	        write_pixel(data->addr[y * data->res_w + x], bytes + i);
-	        i += 4;
-	    }
+		x = -1;
+		while (++x < data->res_w && i < bmpsize)
+		{
+			write_pixel(data->addr[y * data->res_w + x], bytes + i);
+			i += 4;
+		}
 	}
 	mlx_destroy_image(data->mlx, data->img);
 	data->img = NULL;
 }
 
-void    get_screenshot(t_data *data)
+void	get_screenshot(t_data *data)
 {
-	int             file;
-	int             size;
-	unsigned char   *bytes;
+	int				file;
+	int				size;
+	unsigned char	*bytes;
 
 	file = open("./screenshot.bmp", O_CREAT | O_WRONLY | O_TRUNC, \
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);

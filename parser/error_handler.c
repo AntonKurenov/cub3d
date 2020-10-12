@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:29:07 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/10 20:31:51 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 16:16:58 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,24 @@ int		file_exit(int flag)
 int		check_name(char *name)
 {
 	int len;
+	int fd;
 
+	fd = 0;
 	if ((len = ft_strlen(name)) < 4)
 	{
-		ft_putstr("Error\nWrong file name");
-		return (0);
+		ft_putstr("Error\nWrong file name\n");
+		exit(0);
 	}
 	if (extension_comp(name, len) == 1)
-		return (1);
+	{
+		if ((fd = open(name, O_RDONLY)) == -1)
+			file_exit(0);
+		return (fd);
+	}
 	else
+	{
 		ft_putstr("Error\nWrong file extension\n");
-	return (0);
+		exit(0);
+	}
+	return (fd);
 }

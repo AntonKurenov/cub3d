@@ -6,13 +6,13 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:19:00 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/10 20:24:15 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 12:29:11 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	parse_resolution(char *str1, char *str2, t_set *set, int len)
+int		parse_resolution(char *str1, char *str2, t_set *set, int len)
 {
 	if (len != 3)
 		file_exit(4);
@@ -37,8 +37,8 @@ void	free_arr(char **arr)
 
 void	setting_parser(char *line, t_set *set)
 {
-	char **str_arr;
-	int len;
+	char	**str_arr;
+	int		len;
 
 	str_arr = ft_split(line, ' ');
 	len = arr_len(str_arr);
@@ -59,6 +59,6 @@ void	setting_parser(char *line, t_set *set)
 	else if ((ft_strncmp(str_arr[0], "C", 1) == 0))
 		colour_parser(&line, set, 2);
 	else
-		 file_exit(1);
+		file_exit(1);
 	free_arr(str_arr);
 }

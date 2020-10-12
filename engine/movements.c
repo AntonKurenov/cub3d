@@ -6,19 +6,17 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 15:10:53 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/10 16:31:31 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 14:56:50 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void check_position(t_data *data, double new_x, double new_y)
+void	check_position(t_data *data, double new_x, double new_y)
 {
-	double x;
-	double x_s;
-	double y_s;
-	double y;
-	int ret;
+	double	x;
+	double	y;
+	int		ret;
 
 	x = new_x * 3;
 	y = new_y * 3;
@@ -31,20 +29,19 @@ void check_position(t_data *data, double new_x, double new_y)
 	}
 }
 
-void move_s_and_w(t_data *data, t_angle *ang)
+void	move_s_and_w(t_data *data, t_angle *ang)
 {
 	double new_x;
 	double new_y;
 
 	convert_angle(ang);
-	/*printf("data->angle = %d\nangle = %d\n", data->angle, ang->new_angle);*/
 	if (ang->key == BUTTON_W)
 	{
 		new_x = ((data->angle >= 0 && data->angle < 90) || \
 		(data->angle >= 270 && data->angle <= 360)) ? ang->new_x : -ang->new_x;
 		new_y = (data->angle >= 0 && data->angle <= 180) ? -ang->new_y :\
 				ang->new_y;
-		check_position(data, new_x, new_y);	
+		check_position(data, new_x, new_y);
 		return ;
 	}
 	if (ang->key == BUTTON_S)
@@ -58,14 +55,12 @@ void move_s_and_w(t_data *data, t_angle *ang)
 	}
 }
 
-void move_d_and_a(t_data *data, t_angle *ang)
+void	move_d_and_a(t_data *data, t_angle *ang)
 {
 	double new_x;
 	double new_y;
 
 	convert_angle(ang);
-	/*printf("init_angle = %d\n", ang->init_angle);*/
-	/*printf("angle d_and_a = %d\n", ang->new_angle);*/
 	if (ang->key == BUTTON_D)
 	{
 		new_x = (ang->init_angle >= 0 && ang->init_angle < 180) \
@@ -73,7 +68,7 @@ void move_d_and_a(t_data *data, t_angle *ang)
 		new_y = ((ang->init_angle >= 0 && ang->init_angle <= 90) ||\
 		(ang->init_angle >= 270 && ang->init_angle <= 360)) ?\
 				ang->new_y : -ang->new_y;
-		check_position(data, new_x, new_y);	
+		check_position(data, new_x, new_y);
 		return ;
 	}
 	if (ang->key == BUTTON_A)
@@ -87,7 +82,7 @@ void move_d_and_a(t_data *data, t_angle *ang)
 	}
 }
 
-void turn_left(t_data *data)
+void	turn_left(t_data *data)
 {
 	if ((data->angle + TURN_ANG) < 360)
 	{
@@ -99,7 +94,7 @@ void turn_left(t_data *data)
 	data->angle += TURN_ANG;
 }
 
-void turn_right(t_data *data)
+void	turn_right(t_data *data)
 {
 	if ((data->angle - TURN_ANG) > 0)
 	{

@@ -6,13 +6,13 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 18:44:59 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/10 20:29:12 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 12:04:16 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void check_map_elem(char **map, int x, int y, t_player *player)
+static void	check_map_elem(char **map, int x, int y, t_player *player)
 {
 	char *str;
 	char *pl;
@@ -37,7 +37,8 @@ static void check_map_elem(char **map, int x, int y, t_player *player)
 		file_exit(1);
 }
 
-int next_level_map_check(char **map, int len, t_map *map_sp, t_player *player)
+int			next_level_map_check(char **map, int len, t_map *map_sp, t_player \
+			*player)
 {
 	int i;
 	int j;

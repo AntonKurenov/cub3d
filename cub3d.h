@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/10 19:34:28 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 14:59:15 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,11 +243,11 @@ void 	close_win(t_data *data);
 void 	turn_left(t_data *data);
 void 	turn_right(t_data *data);
 void 	move_s_and_w(t_data *data, t_angle *ang);
-t_angle reset_angle(t_angle ang, t_data *data, int key);
+void	reset_angle(t_angle *ang, t_data *data, int key);
 void 	convert_angle(t_angle *ang);
 void 	move_d_and_a(t_data *data, t_angle *ang);
 void	open_textr(t_data *data);
-double	get_percent(t_data *data, double len);
+double	get_percent(t_data *data);
 void	get_textr_addr(t_data *data, int wall_len, int i);
 void	which_texture(t_data *data, double len, int flag);
 int		check_map_for_inter(t_data *data, double x, double y);

@@ -6,13 +6,13 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 12:18:14 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/08/11 17:29:04 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 11:27:42 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int		new_line(char *rem, char **line)
+static int	new_line(char *rem, char **line)
 {
 	int		i;
 	char	*str;
@@ -54,7 +54,7 @@ static char	*rem_check(char *rem, char **line)
 	return (rem);
 }
 
-static int		finder(char *str)
+static int	finder(char *str)
 {
 	int i;
 
@@ -68,7 +68,7 @@ static int		finder(char *str)
 	return (0);
 }
 
-int		get_next_line(int fd, char **line)
+int			get_next_line(int fd, char **line)
 {
 	static char	*rem;
 	int			total;

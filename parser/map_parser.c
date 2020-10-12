@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 14:26:00 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/10 20:45:25 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 14:51:40 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ static char	*dup_with_new_line(const char *s)
 	return (dup_s);
 }
 
-static void		map_checker(char **map, t_set *set)
+static void	map_checker(char **map, t_set *set)
 {
 	int			i;
-	int			j;
 	int			len;
 	t_player	player;
 	t_map		map_specs;
@@ -62,7 +61,6 @@ static void		map_checker(char **map, t_set *set)
 
 static int	map_parser(char **line, t_set *set)
 {
-	int		i;
 	int		len;
 	char	**map;
 
@@ -73,11 +71,10 @@ static int	map_parser(char **line, t_set *set)
 	return (0);
 }
 
-void				init_map_parser(char *line, t_set *set, int flag)
+void		init_map_parser(char *line, t_set *set, int flag)
 {
 	static char		*str;
 	char			*new_line;
-	char			*tmp;
 
 	if (flag == 1)
 	{

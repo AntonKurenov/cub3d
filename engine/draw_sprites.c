@@ -6,13 +6,13 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 10:59:22 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/08 12:28:46 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 14:49:34 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static double get_draw_params(t_data *data, t_spr *spr, double height)
+static double	get_draw_params(t_data *data, t_spr *spr, double height)
 {
 	spr->step_y = data->spr_h / height;
 	spr->step_x = data->spr_w / height;
@@ -36,7 +36,7 @@ static double get_draw_params(t_data *data, t_spr *spr, double height)
 	return (height);
 }
 
-void	draw_sprt(t_data *data, t_spr spr, double height)
+void			draw_sprt(t_data *data, t_spr spr, double height)
 {
 	int y;
 

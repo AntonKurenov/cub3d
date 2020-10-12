@@ -6,39 +6,31 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:13:24 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/10 19:22:08 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 16:31:21 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int check_set(t_set set)
+int			check_set(t_set set)
 {
 	int flag;
 
-	/*printf("res_h = %d\n", set.res_h);*/
-	/*printf("res_w = %d\n", set.res_w);*/
 	flag = 0;
 	if (set.colour.f_red != -1 && set.colour.f_green != -1 && \
 		set.colour.f_blue != -1 && set.colour.ce_red != -1 && \
 		set.colour.ce_green != -1 && set.colour.ce_blue != -1)
-	{
 		flag = flag + 1;
-		printf("flag1 = %d\n", flag);
-	}
 	if (set.res_w != 0 && set.res_h != 0 && set.no_texture != NULL && \
 		set.s_texture != NULL && set.we_texture != NULL && \
 		set.ea_texture != NULL && set.so_texture != NULL)
-	{
 		flag = flag + 1;
-		printf("flag2 = %d\n", flag);
-	}
 	if (flag == 2)
 		return (1);
 	return (0);
 }
 
-int arr_len(char **str_arr)
+int			arr_len(char **str_arr)
 {
 	int i;
 
@@ -48,20 +40,16 @@ int arr_len(char **str_arr)
 	return (i);
 }
 
-static int open_file(char *name, t_set *set, int flag)
+static int	open_file(char *name, t_set *set, int flag)
 {
-	int fd;
-	char *line;
-	char *tmp;
+	int		fd;
+	char	*line;
+	char	*tmp;
 
-	if ((check_name(name)) == 0)
-		return (0);
-	if ((fd = open(name, O_RDONLY)) == -1)
-		file_exit(0);
+	fd = check_name(name);
 	while (get_next_line(fd, &line))
 	{
 		tmp = line;
-		printf("line = %s\n", line);
 		if ((check_set(*set) != 1) && line[0] != '\0')
 			setting_parser(line, set);
 		else if ((check_set(*set) == 1) && line[0] == '\0' && flag != 0)
@@ -73,18 +61,19 @@ static int open_file(char *name, t_set *set, int flag)
 		}
 		free(tmp);
 	}
-	init_map_parser(line, set, 1);
+	if (flag > 0)
+		init_map_parser(line, set, 1);
+	else
+		file_exit(1);
 	return (0);
 }
 
-int main(int args, char **argv)
+int			main(int args, char **argv)
 {
-	int i;
-	int flag;
-	char *save;
-	t_set set;
+	int		flag;
+	char	*save;
+	t_set	set;
 
-	i = 1;
 	save = "--save";
 	flag = 0;
 	init_set(&set);
@@ -100,7 +89,6 @@ int main(int args, char **argv)
 				file_exit(5);
 		}
 		open_file(argv[1], &set, flag);
-		i++;
 		return (0);
 	}
 	else

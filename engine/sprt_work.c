@@ -6,13 +6,13 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 16:35:43 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/08 11:00:12 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 15:01:00 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void swap_el(t_spr *one, t_spr *two)
+static void	swap_el(t_spr *one, t_spr *two)
 {
 	t_spr tmp;
 
@@ -25,7 +25,6 @@ static void	sort_sprites(t_data *data, t_spr *spr, int num)
 {
 	int i;
 	int j;
-	int num_flag;
 
 	if (num == 1)
 		return ;
@@ -40,7 +39,7 @@ static void	sort_sprites(t_data *data, t_spr *spr, int num)
 	}
 }
 
-void	reset_after_draw(t_data *data, t_spr ***spr)
+void		reset_after_draw(t_data *data)
 {
 	int i;
 	int j;
@@ -53,12 +52,12 @@ void	reset_after_draw(t_data *data, t_spr ***spr)
 	}
 }
 
-void	sprt_work(t_data *data)
+void		sprt_work(t_data *data)
 {
-	int j;
-	int i;
-	t_spr *view_spr;
-	int num;
+	int		j;
+	int		i;
+	int		num;
+	t_spr	*view_spr;
 
 	if (data->spr_in_view == 0)
 		return ;
@@ -79,5 +78,5 @@ void	sprt_work(t_data *data)
 	while (++i < data->spr_in_view)
 		draw_sprt(data, view_spr[i], view_spr[i].height);
 	free(view_spr);
-	reset_after_draw(data, &data->spr);
+	reset_after_draw(data);
 }

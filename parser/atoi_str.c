@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 15:00:42 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/10 20:33:53 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 16:06:52 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		atoi_str_res(char **str)
 	ret = 0;
 	while (**str == ' ')
 		(*str)++;
-	if (**str == '-' || **str == '+' || (**str < '0' && **str > '9'))
+	if (**str == '-' || **str == '+' || **str < '0' || **str > '9')
 		file_exit(4);
 	while (**str >= '0' && **str <= '9' && **str)
 	{
@@ -34,6 +34,8 @@ int		atoi_str_res(char **str)
 		}
 		(*str)++;
 	}
+	if (**str != '\0')
+		file_exit(4);
 	return (ret);
 }
 

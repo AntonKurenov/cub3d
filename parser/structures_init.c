@@ -6,20 +6,20 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 12:14:04 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/10 15:38:47 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/12 11:32:31 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void init_player(t_player *new)
+void	init_player(t_player *new)
 {
 	new->x = 0;
 	new->y = 0;
 	new->direct = 0;
 }
 
-void init_colours(t_col *colour)
+void	init_colours(t_col *colour)
 {
 	colour->ce_red = -1;
 	colour->ce_blue = -1;
@@ -42,7 +42,7 @@ void	init_set(t_set *set)
 	set->so_texture = NULL;
 }
 
-void init_map_specs(t_map *map)
+void	init_map_specs(t_map *map)
 {
 	map->height = 0;
 	map->width = 0;
