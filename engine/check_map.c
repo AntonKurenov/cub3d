@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 12:02:22 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/12 12:30:12 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/13 13:02:16 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,23 @@ int		check_map(t_data *data, double x, double y)
 	if (new_x > data->map_w || new_y > data->map_h || new_x < 0 || new_y < 0)
 		return (-1);
 	if (data->map[new_y][new_x] == 49 || data->map[new_y][new_x] == '2')
+		return (1);
+	return (0);
+}
+
+int		check_movements(t_data *data, double x, double y)
+{
+	int new_x;
+	int new_y;
+
+	if (x < 0 || y < 0)
+		return (-1);
+	new_x = (int)(floor(x / 64));
+	new_y = (int)(floor(y / 64));
+	if (new_x > data->map_w || new_y > data->map_h || new_x < 0 || new_y < 0)
+		return (-1);
+	if (data->map[new_y][new_x] == 49 || data->map[new_y][new_x] == '2' ||
+			data->map[new_y][new_x] == ' ')
 		return (1);
 	return (0);
 }

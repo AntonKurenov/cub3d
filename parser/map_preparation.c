@@ -6,13 +6,13 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 17:26:36 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/12 14:52:14 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/14 11:22:20 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	check_last_line(char *str)
+void		check_last_line(char *str)
 {
 	int		i;
 
@@ -101,23 +101,23 @@ char		**map_preparation(char **map, int arr_len, t_map *map_specs)
 	int i;
 	int max_len;
 
-	i = 0;
+	i = -1;
 	max_len = 0;
-	while (i < arr_len)
+	while (++i < arr_len)
 	{
+		if (i == 0)
+			check_last_line(map[i]);
 		if ((len = get_len_and_check(map[i])) > max_len)
 			max_len = len;
-		i++;
 	}
 	check_last_line(map[i - 1]);
 	map_specs->width = max_len;
 	map_specs->height = arr_len;
-	i = 0;
-	while (i < arr_len)
+	i = -1;
+	while (++i < arr_len)
 	{
 		if ((len = ft_strlen(map[i])) != max_len)
 			line_filler(&map[i], max_len);
-		i++;
 	}
 	return (map);
 }

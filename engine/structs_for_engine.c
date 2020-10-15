@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 14:08:53 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/12 20:13:06 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/13 16:43:56 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void	init_img(t_data *new, t_player *player, t_map *map_specs, t_set *set)
 			tan((double)H_FOV * RAD_CONV));
 	new->spr = NULL;
 	new->i = 0;
-	new->pos_x = (player->x) * B_SIZE + 32;
-	new->pos_y = (player->y) * B_SIZE + 32;
+	new->pos_x = (player->x) * B_SIZE + 32.0001;
+	new->pos_y = (player->y) * B_SIZE + 32.0001;
 	new->cur_angle = 0;
 	new->part_angle = (double)(FOV) / (double)(new->res_w);
 	new->set = set;

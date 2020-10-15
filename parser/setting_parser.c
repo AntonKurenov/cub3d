@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:19:00 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/12 12:29:11 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/13 20:38:35 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,28 @@ void	free_arr(char **arr)
 
 void	setting_parser(char *line, t_set *set)
 {
-	char	**str_arr;
+	char	**arr;
 	int		len;
 
-	str_arr = ft_split(line, ' ');
-	len = arr_len(str_arr);
-	if ((ft_strncmp(str_arr[0], "R", 1) == 0) && set->res_h == 0)
-		parse_resolution(str_arr[1], str_arr[2], set, len);
-	else if ((ft_strncmp(str_arr[0], "NO", 2) == 0) && set->no_texture == NULL)
-		texture_parser(str_arr[1], set, 1, len);
-	else if ((ft_strncmp(str_arr[0], "SO", 2) == 0) && set->so_texture == NULL)
-		texture_parser(str_arr[1], set, 2, len);
-	else if ((ft_strncmp(str_arr[0], "WE", 2) == 0) && set->we_texture == NULL)
-		texture_parser(str_arr[1], set, 3, len);
-	else if ((ft_strncmp(str_arr[0], "EA", 2) == 0) && set->ea_texture == NULL)
-		texture_parser(str_arr[1], set, 4, len);
-	else if ((ft_strncmp(str_arr[0], "S", 1) == 0) && set->s_texture == NULL)
-		texture_parser(str_arr[1], set, 5, len);
-	else if ((ft_strncmp(str_arr[0], "F", 1) == 0))
+	arr = ft_split(line, ' ');
+	len = arr_len(arr);
+	if ((new_strncmp(arr[0], "R", 1) == 0) && set->res_h == 0)
+		parse_resolution(arr[1], arr[2], set, len);
+	else if ((new_strncmp(arr[0], "NO", 2) == 0) && set->no_texture == NULL)
+		texture_parser(arr[1], set, 1, len);
+	else if ((new_strncmp(arr[0], "SO", 2) == 0) && set->so_texture == NULL)
+		texture_parser(arr[1], set, 2, len);
+	else if ((new_strncmp(arr[0], "WE", 2) == 0) && set->we_texture == NULL)
+		texture_parser(arr[1], set, 3, len);
+	else if ((new_strncmp(arr[0], "EA", 2) == 0) && set->ea_texture == NULL)
+		texture_parser(arr[1], set, 4, len);
+	else if ((new_strncmp(arr[0], "S", 1) == 0) && set->s_texture == NULL)
+		texture_parser(arr[1], set, 5, len);
+	else if ((new_strncmp(arr[0], "F", 1) == 0))
 		colour_parser(&line, set, 1);
-	else if ((ft_strncmp(str_arr[0], "C", 1) == 0))
+	else if ((new_strncmp(arr[0], "C", 1) == 0))
 		colour_parser(&line, set, 2);
 	else
 		file_exit(1);
-	free_arr(str_arr);
+	free_arr(arr);
 }

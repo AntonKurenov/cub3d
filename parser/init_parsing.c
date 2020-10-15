@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:13:24 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/12 16:31:21 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/13 20:39:21 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int			main(int args, char **argv)
 	{
 		if (args == 3)
 		{
-			if (ft_strncmp(argv[2], "--save", 6) == 0)
+			if (new_strncmp(argv[2], "--save", 6) == 0)
 				set.is_save = 1;
 			else
 				file_exit(5);

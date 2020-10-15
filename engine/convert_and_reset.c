@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 11:14:51 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/12 14:54:55 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/14 12:53:12 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ void	convert_angle(t_angle *ang)
 		ang->new_angle = 360 - ang->mid_angle;
 	ang->new_x = cos(ang->new_angle * RAD_CONV) * STEP;
 	ang->new_y = sin(ang->new_angle * RAD_CONV) * STEP;
+}
+
+int		ft_exit(t_data *data)
+{
+	mlx_destroy_window(data->mlx, data->mlx_win);
+	exit(0);
+	return (0);
 }
 
 void	close_win(t_data *data)

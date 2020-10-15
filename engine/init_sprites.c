@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 12:11:05 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/12 14:15:36 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/13 14:54:09 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_sprites(t_data *data, t_spr *spr)
 		spr->flag = get_flag(data->pos_x, data->pos_y, spr->new_x, spr->new_y);
 		diff_x = get_diff(data->pos_x, spr->new_x);
 		diff_y = get_diff(data->pos_y, spr->new_y);
-		spr->dist = sqrt(diff_x * diff_x + diff_y * diff_y) * 0.95;
+		spr->dist = sqrt(diff_x * diff_x + diff_y * diff_y) * 0.9;
 		spr->height = (data->plane_dist / spr->dist);
 		spr->angle = (atan((double)diff_y / (double)diff_x)) * INV_RAD;
 		spr->half_height = spr->height * 0.5;

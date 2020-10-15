@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 16:02:14 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/12 14:54:44 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/14 12:52:36 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	init_engine(t_player *player, t_set *set, t_map *map_specs, char **map)
 	if (img.set->is_save == 1)
 		get_screenshot(&img);
 	mlx_hook(img.mlx_win, 2, 1L << 2, next_frame, &img);
+	mlx_hook(img.mlx_win, 17, 1L << 17, ft_exit, &img);
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
 	mlx_loop(img.mlx);
 }

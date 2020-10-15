@@ -4,7 +4,7 @@ NO_COLOR = \x1b[0m
 RED = \x1b[31;01m
 
 NAME = cub3D
-HEADER = cub3d.h
+HEADER = ./cub3d.h
 COMP_FLAGS = -Wall -Wextra -Werror
 ENGINE_DIR = ./engine/
 PARSER_DIR = ./parser/
@@ -16,7 +16,7 @@ MLX_FLAGS = -framework OpenGL -framework AppKit
 PARSER_SRCS = error_handler.c get_next_line.c \
 			  get_next_line_utils.c init_parsing.c texture_parser.c \
 			  atoi_str.c map_parser.c map_checker.c map_preparation.c \
-			  structures_init.c setting_parser.c
+			  structures_init.c setting_parser.c new_strncmp.c
 
 ENGINE_SRCS = init_engine.c structs_for_engine.c \
 			  check_horizontal.c init_texture.c \
@@ -25,10 +25,9 @@ ENGINE_SRCS = init_engine.c structs_for_engine.c \
 			  check_map.c sprt_work.c init_sprites.c aux_sprt_funct.c \
 			  get_flags.c draw_sprites.c get_screenshot.c
 
-LIBFT_SRCS = ft_strchr.c ft_atoi.c ft_isdigit.c \
-	     ft_calloc.c ft_strdup.c ft_substr.c \
-	     ft_strlcpy.c ft_memset.c ft_putstr.c \
-	     ft_putchar.c ft_split.c ft_strncmp.c ft_strjoin.c
+LIBFT_SRCS = ft_strchr.c ft_calloc.c ft_strdup.c ft_substr.c \
+	     ft_memset.c ft_putstr.c ft_putchar.c ft_split.c \
+	     ft_strncmp.c ft_strjoin.c
 
 OBJS = $(PARSER_FILES:.c=.o) $(LIBFT_FILES:.c=.o) $(ENGINE_FILES:.c=.o)
 
@@ -36,7 +35,7 @@ ENGINE_FILES = $(addprefix $(ENGINE_DIR), $(ENGINE_SRCS))
 PARSER_FILES = $(addprefix $(PARSER_DIR), $(PARSER_SRCS))
 LIBFT_FILES = $(addprefix $(LIBFT_DIR), $(LIBFT_SRCS))
 
-ALL_FILES = $(PARSER_FILES) $(LIBFT_FILES) $(ENGINE_FILES)
+ALL_FILES = $(PARSER_FILES) $(LIBFT_FILES) $(ENGINE_FILES) $(HEADER)
 
 all: $(NAME)
 
@@ -51,6 +50,8 @@ $(MINILIBX):
 %.o: %.c
 	@gcc $(COMP_FLAGS) -I $(HEADER) -c $< -o $@ 
 
+bonus: all
+
 clean:
 	@make clean -C $(MINILIBXDIR)
 	@rm -f $(OBJS)
@@ -64,6 +65,5 @@ re: fclean all
 
 norm:
 	norminette $(ALL_FILES)
-
 
 .PHONY: all clean fclean re norm
