@@ -6,11 +6,23 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 18:44:59 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/12 12:04:16 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/17 15:11:13 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+static void	check_first_row(char *str1, char *str2)
+{
+	int i;
+
+	i = -1;
+	while (str1[++i])
+	{
+		if (str1[i] == ' ' && str2[i] != ' ')
+			file_exit(1);
+	}
+}
 
 static void	check_map_elem(char **map, int x, int y, t_player *player)
 {
@@ -50,6 +62,8 @@ int			next_level_map_check(char **map, int len, t_map *map_sp, t_player \
 		j = -1;
 		while (++j < map_sp->width)
 		{
+			if (len > 1 && i == 0)
+				check_first_row(map[0], map[1]);
 			if (map[i][j] == '1' || map[i][j] == ' ')
 				j++;
 			if ((j < map_sp->width) && (map[i][j] == 'N' || map[i][j] == 'W' ||\

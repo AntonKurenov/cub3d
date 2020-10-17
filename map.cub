@@ -1,6 +1,6 @@
 R 1280 720
 
-NO ./textures/wolf/colorstone.xpm
+
 
 SO ./textures/wolf/eagle.xpm
 
@@ -8,12 +8,18 @@ WE ./textures/wolf/wood.xpm
 
 EA ./textures/street/spray.xpm
 
+
+
+
+
+NO ./textures/wolf/colorstone.xpm
+
 S ./textures/wolf/barrel.xpm
 
-C 130, 250, 100
-F 91 , 1, 100
+C 0,255,255
+F 0, 255,0
 
-        1111111111111111111111111
+        11111111111111111111111111
         1000000000110000000000001
         1011000001110000002000001
         1001000000000000000000001
