@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 17:31:30 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/15 11:30:27 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/20 17:20:00 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,6 +273,7 @@ int				new_strncmp(const char *s1, const char *s2, size_t n);
 void			check_last_line(char *str);
 int				atoi_for_color(char *str);
 void			check_colors(char *str);
+void			check_numbers(char *str);
 int				ft_exit(t_data *data);
 
 #endif

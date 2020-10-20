@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 15:01:41 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/17 17:24:15 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/20 17:20:00 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int			colour_parser(char **line, t_set *set, int type)
 
 	(*line) += 2;
 	check_colors(*line);
+	check_numbers(*line);
 	arr = ft_split(*line, ',');
 	if (arr_len(arr) != 3)
 		file_exit(3);

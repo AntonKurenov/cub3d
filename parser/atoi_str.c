@@ -6,7 +6,7 @@
 /*   By: elovegoo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 15:00:42 by elovegoo          #+#    #+#             */
-/*   Updated: 2020/10/17 17:13:55 by elovegoo         ###   ########.fr       */
+/*   Updated: 2020/10/20 17:23:08 by elovegoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,25 @@ int			atoi_str_res(char **str)
 	if (**str != '\0')
 		file_exit(4);
 	return (ret);
+}
+
+void		check_numbers(char *str)
+{
+	int num_count;
+
+	num_count = 0;
+	while (*str)
+	{
+		if (*str >= '0' && *str <= '9')
+		{
+			num_count++;
+			while (*str >= '0' && *str <= '9')
+				str++;
+		}
+		str++;
+	}
+	if (num_count != 3)
+		file_exit(3);
 }
 
 void		check_colors(char *str)
